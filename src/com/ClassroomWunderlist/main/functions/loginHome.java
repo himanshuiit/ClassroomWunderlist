@@ -1,7 +1,7 @@
 package com.ClassroomWunderlist.main.functions;
 
 import com.ClassroomWunderlist.main.template.userLogin;
-//import com.ClassroomWunderlist.main.template.;
+import com.ClassroomWunderlist.main.template.userSignUp;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -47,7 +47,7 @@ public class loginHome {
 
         userLogin ob = new userLogin();
         BorderPane credential = new BorderPane(ob.userLogin(), header, null, null, null);
-        credential.setMaxWidth(450);
+        credential.setMaxWidth(350);
 
         login.setOnMouseClicked(e->{
             credential.setCenter(ob.userLogin());
@@ -56,7 +56,7 @@ public class loginHome {
         });
 
         register.setOnMouseClicked(e->{
-            credential.setCenter(ob.userLogin());
+            credential.setCenter(userSignUp.userSignUp());
             login.setStyle("");
             register.setStyle(" -fx-border-color: red; -fx-border-width: 0 0 3 0; -fx-border-insets: 0 0 1 0; ");
         });

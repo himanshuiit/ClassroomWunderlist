@@ -34,7 +34,8 @@ public class userLogin {
 
         TextField companyName = new TextField();
         companyName.setPromptText("Company Name");
-        companyName.setPrefHeight(35);
+        companyName.setFont(Font.font(15));
+        companyName.setPrefHeight(30);
         companyName.setStyle("-fx-background-color: transparent; -fx-border-color: #fff; -fx-border-width: 2,2,2,2; -fx-border-radius: 200; -fx-text-inner-color: #fff;");
         companyName.focusedProperty().addListener((observable,  oldValue,  newValue) -> {
             if(newValue && firstTime.get()){
@@ -45,20 +46,18 @@ public class userLogin {
 
         TextField username = new TextField();
         username.setPromptText("full name or email address");
-        username.setPrefHeight(35);
+        username.setFont(Font.font(15));
+        username.setPrefHeight(30);
         username.setStyle("-fx-background-color: transparent; -fx-border-color: #fff; -fx-border-width: 2,2,2,2; -fx-border-radius: 200; -fx-text-inner-color: #fff;");
 
         PasswordField password = new PasswordField();
         password.setPromptText("password");
-        password.setPrefHeight(35);
+        password.setFont(Font.font(15));
+        password.setPrefHeight(30);
         password.setStyle("-fx-background-color: transparent; -fx-border-color: #fff; -fx-border-width: 2,2,2,2; -fx-border-radius: 200; -fx-text-inner-color: #fff;");
 
         Label error = new Label();
         error.setTextFill(Color.web("red"));
-
-        vb.getChildren().addAll(companyName, username,password, error);
-
-        loginPane.setCenter(vb);
 
         HBox loginRow = new HBox();
         Button loginButton = new Button("Login");
@@ -102,7 +101,9 @@ public class userLogin {
             new Thread(sleeper).start();
         });
 
-        loginPane.setBottom(loginRow);
+        vb.getChildren().addAll(companyName, username,password, error, loginRow);
+        loginPane.setCenter(vb);
+        loginPane.setMinHeight(400);
 
         return loginPane;
     }
