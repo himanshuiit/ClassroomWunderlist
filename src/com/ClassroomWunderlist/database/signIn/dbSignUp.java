@@ -7,43 +7,33 @@ import java.sql.PreparedStatement;
 
 public class dbSignUp {
 
-    public static String[] userSignUp(String fullName, String emailId, String password, String phoneNumber, String gender, String college){
+    public static String userSignUp(String companyName, String fullName, String employeeEmailId, String password){
         Connection con = null;
 
         PreparedStatement stmt = null;
-        String query = DBUtils.prepareInsertQuery("classroomdbms.userdetail", "fullName, emailId, password, phoneNumber, gender, college", "?,?,?,?,?,?");
+        String query = DBUtils.prepareInsertQuery("classroomwunderlist.company", "companyName ,fullName, employeeEmailId ,password","?,?,?,?");
 
-        String updateCurrentUserQuery = DBUtils.prepareInsertQuery("classroomdbms.currentuser", "fullName, emailId, phoneNumber, gender, college", "?,?,?,?,?");
+        String updateCurrentUserQuery = DBUtils.prepareInsertQuery("classroomwunderlist.currentuser", "companyName, employeeEmailId", "?,?");
 
-        String[] status = new String[6];
-        status[1]=fullName;
-        status[2]=emailId;
-        status[3]=phoneNumber;
-        status[4]=gender;
-        status[5]=college;
+        String status = "ongoing";
 
         try{
             con = DBUtils.getConnection();
             stmt = con.prepareStatement(query);
-            stmt.setString(1, fullName);
-            stmt.setString(2, emailId);
-            stmt.setString(3, password);
-            stmt.setString(4, phoneNumber);
-            stmt.setString(5, gender);
-            stmt.setString(6, college);
+            stmt.setString(1, companyName);
+            stmt.setString(2, fullName);
+            stmt.setString(3, employeeEmailId);
+            stmt.setString(4, password);
             stmt.executeUpdate();
-            status[0]="success";
+            status="success";
 
             stmt = con.prepareStatement(updateCurrentUserQuery);
-            stmt.setString(1, fullName);
-            stmt.setString(2, emailId);
-            stmt.setString(3, phoneNumber);
-            stmt.setString(4, gender);
-            stmt.setString(5, college);
+            stmt.setString(1, companyName);
+            stmt.setString(2, employeeEmailId);
             stmt.executeUpdate();
         }
         catch(Exception e){
-            status[0] = e.getMessage();
+            status = e.getMessage();
         }
         finally{
             DBUtils.closeStatement(stmt);

@@ -13,20 +13,21 @@ public class userLoggedIn {
         PreparedStatement stmt = null;
         ResultSet rs = null;
 
-        String query = DBUtils.prepareSelectQuery(" * ", "classroomdbms.currentuser", "" );
+        String query = DBUtils.prepareSelectQuery(" * ", "classroomwunderlist.currentuser", "" );
 
-        String[] status = new String[4];
+        String[] status = {"ongoing","",""};
 
         try {
             con = DBUtils.getConnection();
             stmt = con.prepareStatement(query);
             rs = stmt.executeQuery();
-            rs.next();
-            status[0]="success";
-            status[1]=rs.getString("companyName");
-            status[2]=rs.getString("fullName");
-            status[3]=rs.getString("emailId");
+            if (rs.next()){
+                status[0]="success";
+                status[1]=rs.getString("companyName");
+                status[2]=rs.getString("employeeEmailId");
+            }
         } catch (Exception e) {
+            e.printStackTrace();
             status[0] = e.getMessage();
         } finally {
             DBUtils.closeAll(rs, stmt, con);

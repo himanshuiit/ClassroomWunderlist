@@ -45,18 +45,20 @@ public class loginHome {
 
         header.getChildren().addAll(login, register);
 
-        userLogin ob = new userLogin();
-        BorderPane credential = new BorderPane(ob.userLogin(), header, null, null, null);
+        userLogin loginObject = new userLogin();
+        userSignUp signUpObject = new userSignUp();
+
+        BorderPane credential = new BorderPane(loginObject.userLogin(), header, null, null, null);
         credential.setMaxWidth(350);
 
         login.setOnMouseClicked(e->{
-            credential.setCenter(ob.userLogin());
+            credential.setCenter(loginObject.userLogin());
             login.setStyle(" -fx-border-color: red; -fx-border-width: 0 0 3 0; -fx-border-insets: 0 0 1 0; ");
             register.setStyle("");
         });
 
         register.setOnMouseClicked(e->{
-            credential.setCenter(userSignUp.userSignUp());
+            credential.setCenter(signUpObject.userSignUp());
             login.setStyle("");
             register.setStyle(" -fx-border-color: red; -fx-border-width: 0 0 3 0; -fx-border-insets: 0 0 1 0; ");
         });

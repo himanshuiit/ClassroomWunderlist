@@ -23,10 +23,10 @@ public class userSignUp {
 
     public static final Pattern VALID_EMAIL_ADDRESS_REGEX =
             Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
+    public String status ;
 
-    public static BorderPane userSignUp(){
+    public BorderPane userSignUp(){
         final BooleanProperty firstTime = new SimpleBooleanProperty(true); // Variable to store the focus on stage load
-        String[] status = {};
 
         BorderPane signUpPane = new BorderPane();
         signUpPane.setPadding(new Insets(20,20,0,20));
@@ -97,12 +97,12 @@ public class userSignUp {
             else if (!password.getText().equals(confirmPassword.getText()))
                 error.setText("Password and confirm password don't match");
             else{
-//                status = dbSignUp.userSignUp(fullName.getText(),email.getText(),password.getText());
-                if (status[0]=="success") {
-                    main.window.setScene(profile.main(status));
+                status = dbSignUp.userSignUp(companyName.getText(), fullName.getText(),email.getText(),password.getText());
+                if (status=="success") {
+                    main.window.setScene(profile.main());
                 }
                 else
-                    error.setText(status[0]);
+                    error.setText(status);
             }
             Task<Void> sleeper = new Task<Void>() {
                 @Override

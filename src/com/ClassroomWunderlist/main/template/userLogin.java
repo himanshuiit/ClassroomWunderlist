@@ -19,9 +19,15 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class userLogin {
 
-    public String[] status;
+    public static final Pattern VALID_EMAIL_ADDRESS_REGEX =
+            Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
+
+    public String status;
     final BooleanProperty firstTime = new SimpleBooleanProperty(true); // Variable to store the focus on stage load
 
     public BorderPane userLogin(){
@@ -44,11 +50,11 @@ public class userLogin {
             }
         });
 
-        TextField username = new TextField();
-        username.setPromptText("full name or email address");
-        username.setFont(Font.font(15));
-        username.setPrefHeight(30);
-        username.setStyle("-fx-background-color: transparent; -fx-border-color: #fff; -fx-border-width: 2,2,2,2; -fx-border-radius: 200; -fx-text-inner-color: #fff;");
+        TextField emailId = new TextField();
+        emailId.setPromptText("Email address");
+        emailId.setFont(Font.font(15));
+        emailId.setPrefHeight(30);
+        emailId.setStyle("-fx-background-color: transparent; -fx-border-color: #fff; -fx-border-width: 2,2,2,2; -fx-border-radius: 200; -fx-text-inner-color: #fff;");
 
         PasswordField password = new PasswordField();
         password.setPromptText("password");
@@ -71,14 +77,16 @@ public class userLogin {
             e.consume();
             if (companyName.getText().isEmpty())
                 error.setText("Company Name can't be empty");
-            else if (username.getText().isEmpty())
+            else if (emailId.getText().isEmpty())
                 error.setText("Username or EmailId can't be empty");
+            else if (!validate(emailId.getText()))
+                error.setText("Email ID incorrect");
             else if (password.getText().isEmpty())
                 error.setText("Password can't be empty");
             else{
-                status = dbLoginCheck.dbLoginCheck(username.getText(),password.getText());
-                if (status[0]=="success"){
-                    main.window.setScene(profile.main(status));
+                status = dbLoginCheck.dbLoginCheck(companyName.getText(),emailId.getText(),password.getText());
+                if (status=="success"){
+                    main.window.setScene(profile.main());
                 }
                 else
                     error.setText("Incorrect Username / Email Id or password !");
@@ -101,10 +109,15 @@ public class userLogin {
             new Thread(sleeper).start();
         });
 
-        vb.getChildren().addAll(companyName, username,password, error, loginRow);
+        vb.getChildren().addAll(companyName, emailId, password, error, loginRow);
         loginPane.setCenter(vb);
         loginPane.setMinHeight(400);
 
         return loginPane;
+    }
+
+    public static boolean validate(String emailStr) {
+        Matcher matcher = VALID_EMAIL_ADDRESS_REGEX .matcher(emailStr);
+        return matcher.find();
     }
 }

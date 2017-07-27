@@ -28,7 +28,7 @@ public class main extends Application {
         if (!status[0].equals("success"))
             window.setScene(loginHome.homeView());
         else
-            window.setScene(profile.main(status));
+            window.setScene(profile.main());
 
         window.getIcons().add(new Image(getClass().getResourceAsStream("../../resources/images/ClassroomWunderlist.png")));
 

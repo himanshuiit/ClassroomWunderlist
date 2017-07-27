@@ -35,7 +35,7 @@ public class profile {
     public static Label speakOut;
     public static Label submission;
 
-    public static Scene main(String[] profileDetails){
+    public static Scene main(){
         BorderPane userOptions = new BorderPane();
 
         BorderPane optionDetails = new BorderPane();
@@ -57,15 +57,15 @@ public class profile {
         StackPane logo = new StackPane(userLOGO);
         logo.setStyle("-fx-background-color: #fff");
 
-        fullName = new Label(profileDetails[1]);
+        fullName = new Label("profileDetails[1]");
         fullName.setFont(new Font("Cambria", 25));
         fullName.setTextFill(Color.web("#ededed"));
 
-        emailID = new Label(profileDetails[2]);
+        emailID = new Label("profileDetails[2]");
         emailID.setFont(new Font("Cambria", 15));
         emailID.setTextFill(Color.web("#ededed"));
 
-        phoneNumbercollege = new Label(profileDetails[3]+",  "+profileDetails[5]);
+        phoneNumbercollege = new Label("profileDetails[5]");
         phoneNumbercollege.setFont(new Font("Cambria", 15));
         phoneNumbercollege.setTextFill(Color.web("#ededed"));
         phoneNumbercollege.setWrapText(true);
