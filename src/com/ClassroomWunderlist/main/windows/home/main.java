@@ -1,8 +1,9 @@
 package com.ClassroomWunderlist.main.windows.home;
 
-import com.ClassroomDBMS.database.logIn.userLoggedIn;
-import com.ClassroomDBMS.main.functions.loginHome;
-import com.ClassroomDBMS.main.functions.profile;
+import com.ClassroomWunderlist.database.logIn.userLoggedIn;
+import com.ClassroomWunderlist.main.functions.loginHome;
+import com.ClassroomWunderlist.main.functions.profile;
+
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -29,7 +30,7 @@ public class main extends Application {
         else
             window.setScene(profile.main(status));
 
-        window.getIcons().add(new Image(getClass().getResourceAsStream("../../resources/images/ClassroomDBMS.png")));
+        window.getIcons().add(new Image(getClass().getResourceAsStream("../../resources/images/ClassroomWunderlist.png")));
 
         window.setMinWidth(850);
         window.setMinHeight(535);
