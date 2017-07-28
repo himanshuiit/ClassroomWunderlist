@@ -8,8 +8,7 @@ import java.sql.ResultSet;
 
 public class fetchbugFromList {
 
-
-    public static String[][] fetchbugFromList(String companyName, String listName) {
+    public static String[][] fetchbugFromList(String companyName, String listName, String sortFilter) {
 
         Connection con = null;
         PreparedStatement stmt = null;
@@ -17,7 +16,7 @@ public class fetchbugFromList {
 
         String[][] response = new String[1][1];
 
-        String query = DBUtils.prepareSelectQuery(" * ", "classroomwunderlist.bugsinlist", "( companyName = '"+companyName+"' AND listName = '"+listName+"')","ORDER BY timestamp asc" );
+        String query = DBUtils.prepareSelectQuery(" * ", "classroomwunderlist.bugsinlist", "( companyName = '"+companyName+"' AND listName = '"+listName+"')",sortFilter );
 
         try {
             con = DBUtils.getConnection();

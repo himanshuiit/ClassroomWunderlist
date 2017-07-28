@@ -8,7 +8,7 @@ import java.sql.ResultSet;
 
 public class fetchAssignedBugs {
 
-    public static String[][] fetchAssignedBugs(String companyName, String assigneeEmailId) {
+    public static String[][] fetchAssignedBugs(String companyName, String assigneeEmailId, String sortFilter) {
 
         Connection con = null;
         PreparedStatement stmt = null;
@@ -16,7 +16,7 @@ public class fetchAssignedBugs {
 
         String[][] response = new String[1][1];
 
-        String query = DBUtils.prepareSelectQuery(" * ", "classroomwunderlist.bugsinlist", "(assigneeEmailId = '"+assigneeEmailId+"' AND companyName = '"+companyName+"' )","ORDER BY timestamp asc" );
+        String query = DBUtils.prepareSelectQuery(" * ", "classroomwunderlist.bugsinlist", "(assigneeEmailId = '"+assigneeEmailId+"' AND companyName = '"+companyName+"' )",sortFilter );
 
         try {
             con = DBUtils.getConnection();

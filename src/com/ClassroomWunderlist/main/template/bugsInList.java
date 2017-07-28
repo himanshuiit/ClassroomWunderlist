@@ -1,9 +1,11 @@
 package com.ClassroomWunderlist.main.template;
 
-import com.ClassroomWunderlist.database.bugs.assigned.fetchAssignedBugs;
+import com.ClassroomWunderlist.database.bugs.list.fetchbugFromList;
+
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Cursor;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.BorderPane;
@@ -20,29 +22,42 @@ public class bugsInList {
     public static BorderPane rightPanel;
     public static BorderPane view;
 
-    public static BorderPane view(String companyName, String assigneeEmailId){
-
-        Label header = new Label("Assigned to me");
-        header.setPadding(new Insets(10));
-        header.setFont(new Font("Cambria", 25));
-        header.setTextFill(Color.web("#ededed"));
-        StackPane headerPane = new StackPane(header);
-        headerPane.setAlignment(Pos.BASELINE_LEFT);
+    public static BorderPane view(String companyName, String listName){
 
         lists = new VBox(15);
 
-        String[][] bugsList = fetchAssignedBugs.fetchAssignedBugs(companyName, assigneeEmailId);
+        Label header = new Label(listName);
+        header.setPadding(new Insets(0));
+        header.setFont(new Font("Cambria", 25));
+        header.setTextFill(Color.web("#ededed"));
 
-        if (bugsList[0][0].equals("SUCCESS")){
-            for (int i=1; i<bugsList.length;++i )
-                addList(bugsList[i][0]);
-        }
+        ComboBox<String> myComboBox = new ComboBox<>();
+        myComboBox.getItems().addAll(
+                "Sort by Creation Date",
+                "Sort Alphabetically",
+                "Sort by Due Date",
+                "Sort by Asignee",
+                "Sort by Priority");
+        myComboBox.setValue("Sort by Creation Date");
+
+        BorderPane temp = new BorderPane(null,null,myComboBox,null,header);
+        temp.setPadding(new Insets(20,30,20,0));
+        BorderPane headerSection = new BorderPane(
+                null,
+                temp,
+                null,
+                null,
+                null);
+
+        myComboBox.valueProperty().addListener((ov, t, t1) -> System.out.println(t1));
+
+        fetching(companyName, listName, "ORDER BY timestamp asc");
 
         ScrollPane bugs = new ScrollPane(lists);
         bugs.setStyle("-fx-background-color: transparent");
         bugs.setFitToWidth(true);
 
-        leftPanel = new BorderPane(bugs,new VBox(headerPane),null,null,null);
+        leftPanel = new BorderPane(bugs,new VBox(headerSection),null,null,null);
         leftPanel.setPadding(new Insets(10,30,30,30));
 
         rightPanel = new BorderPane();
@@ -62,7 +77,7 @@ public class bugsInList {
         StackPane newBugsPane = new StackPane(newBugs);
         newBugsPane.setAlignment(Pos.BASELINE_LEFT);
         newBugsPane.setStyle("-fx-background-color: #f4f4ff");
-        newBugsPane.setOnMouseEntered(e-> newBugsPane.setStyle("-fx-background-color: #dbdbe5"));
+        newBugsPane.setOnMouseEntered(e-> newBugsPane.setStyle("-fx-background-color: #e6f3f7"));
         newBugsPane.setOnMouseExited(e-> newBugsPane.setStyle("-fx-background-color: #f4f4ff"));
         newBugsPane.setCursor(Cursor.HAND);
         newBugsPane.setOnMouseClicked(e->{
@@ -70,6 +85,15 @@ public class bugsInList {
             view.setRight(rightPanel);
         });
         lists.getChildren().add(newBugsPane);
+    }
+
+    public static void fetching(String companyName, String listName, String filter){
+        String[][] bugsList = fetchbugFromList.fetchbugFromList(companyName, listName, filter);
+
+        if (bugsList[0][0].equals("SUCCESS")){
+            for (int i=1; i<bugsList.length;++i )
+                addList(bugsList[i][0]);
+        }
     }
 
 }

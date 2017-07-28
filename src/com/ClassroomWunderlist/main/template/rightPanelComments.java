@@ -7,7 +7,10 @@ public class rightPanelComments {
 
     public static BorderPane rightPanelComments(){
 
-        BorderPane panel = new BorderPane(new Label("comments here"));
+
+
+
+        BorderPane panel = new BorderPane();
         return panel;
 
     }

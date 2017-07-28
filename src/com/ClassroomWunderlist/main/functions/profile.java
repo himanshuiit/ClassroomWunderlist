@@ -174,7 +174,7 @@ public class profile {
             StackPane newListPane = new StackPane(newList);
             newListPane.setAlignment(Pos.BASELINE_LEFT);
             newListPane.setStyle("-fx-background-color: #f4f4ff");
-            newListPane.setOnMouseEntered(e-> newListPane.setStyle("-fx-background-color: #dbdbe5"));
+            newListPane.setOnMouseEntered(e-> newListPane.setStyle("-fx-background-color: #deeff5"));
             newListPane.setOnMouseExited(e-> newListPane.setStyle("-fx-background-color: #f4f4ff"));
             newListPane.setCursor(Cursor.HAND);
             newListPane.setOnMouseClicked(e-> optionData.setCenter(bugsInList.view(company.getText(),name)));
