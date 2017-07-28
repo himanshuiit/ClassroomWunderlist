@@ -15,7 +15,7 @@ public class userLoggedIn {
 
         String query = DBUtils.prepareSelectQuery(" * ", "classroomwunderlist.currentuser", "id = '"+id+"'" );
 
-        String[] status = {"ongoing","",""};
+        String[] status = {"ongoing","","",""};
 
         try {
             con = DBUtils.getConnection();
@@ -24,7 +24,8 @@ public class userLoggedIn {
             if (rs.next()){
                 status[0]="success";
                 status[1]=rs.getString("companyName");
-                status[2]=rs.getString("employeeEmailId");
+                status[2]=rs.getString("fullName");
+                status[3]=rs.getString("employeeEmailId");
             }
         } catch (Exception e) {
             e.printStackTrace();

@@ -27,7 +27,7 @@ public class userLogin {
     public static final Pattern VALID_EMAIL_ADDRESS_REGEX =
             Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
 
-    public String status;
+    public String[] status;
     final BooleanProperty firstTime = new SimpleBooleanProperty(true); // Variable to store the focus on stage load
 
     public BorderPane userLogin(){
@@ -85,8 +85,8 @@ public class userLogin {
                 error.setText("Password can't be empty");
             else{
                 status = dbLoginCheck.dbLoginCheck(companyName.getText(),emailId.getText(),password.getText());
-                if (status=="success"){
-                    main.window.setScene(profile.main(companyName.getText(), emailId.getText()));
+                if (status[0].equals("success")){
+                    main.window.setScene(profile.main(companyName.getText(), status[1], emailId.getText()));
                 }
                 else
                     error.setText("Incorrect Username / Email Id or password !");

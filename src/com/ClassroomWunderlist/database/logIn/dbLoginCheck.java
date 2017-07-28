@@ -9,7 +9,7 @@ import java.sql.ResultSet;
 
 public class dbLoginCheck {
 
-    public static String dbLoginCheck(String companyName, String emailId, String password) {
+    public static String[] dbLoginCheck(String companyName, String emailId, String password) {
         Connection con = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
@@ -18,9 +18,9 @@ public class dbLoginCheck {
 
         String query = DBUtils.prepareSelectQuery(" * ", "classroomwunderlist.company", "( companyName = ? AND employeeEmailId = ? AND password = ? )");
 
-        String updateCurrentUserQuery = DBUtils.prepareInsertQuery("classroomwunderlist.currentuser", "id, companyName, employeeEmailId", "?,?,?");
+        String updateCurrentUserQuery = DBUtils.prepareInsertQuery("classroomwunderlist.currentuser", "id, companyName, fullName, employeeEmailId", "?,?,?,?");
 
-        String status = "ongoing";
+        String[] status = {"ongoing",""};
 
         try {
             con = DBUtils.getConnection();
@@ -35,18 +35,21 @@ public class dbLoginCheck {
             rs.beforeFirst();
 
             if (size>0){
-                status="success";
+                status[0]="success";
+                rs.next();
+                status[1]=rs.getString("fullName");
 
                 stmt = con.prepareStatement(updateCurrentUserQuery);
                 stmt.setString(1, userID);
                 stmt.setString(2, companyName);
-                stmt.setString(3, emailId);
+                stmt.setString(3, status[1]);
+                stmt.setString(4, emailId);
                 stmt.executeUpdate();
             }
 
         } catch (Exception e) {
             e.printStackTrace();
-            status = e.getMessage();
+            status[0] = e.getMessage();
         } finally {
             DBUtils.closeAll(rs, stmt, con);
             return status;

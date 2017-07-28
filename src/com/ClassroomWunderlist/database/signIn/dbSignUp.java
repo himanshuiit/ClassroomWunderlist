@@ -16,7 +16,7 @@ public class dbSignUp {
 
         String query = DBUtils.prepareInsertQuery("classroomwunderlist.company", "companyName ,fullName, employeeEmailId ,password","?,?,?,?");
 
-        String updateCurrentUserQuery = DBUtils.prepareInsertQuery("classroomwunderlist.currentuser", "id, companyName, employeeEmailId", "?,?,?");
+        String updateCurrentUserQuery = DBUtils.prepareInsertQuery("classroomwunderlist.currentuser", "id, companyName, fullName, employeeEmailId", "?,?,?,?");
 
         String status = "ongoing";
 
@@ -33,7 +33,8 @@ public class dbSignUp {
             stmt = con.prepareStatement(updateCurrentUserQuery);
             stmt.setString(1, userID);
             stmt.setString(2, companyName);
-            stmt.setString(3, employeeEmailId);
+            stmt.setString(3, fullName);
+            stmt.setString(4, employeeEmailId);
             stmt.executeUpdate();
         }
         catch(Exception e){

@@ -2,9 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cb4f0844-a678-4a9f-a5f2-332a5ee99952" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ClassroomWunderlist/database/lists/addNew.java" afterPath="$PROJECT_DIR$/src/com/ClassroomWunderlist/database/lists/addNew.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ClassroomWunderlist/database/lists/keywordSearch.java" afterPath="$PROJECT_DIR$/src/com/ClassroomWunderlist/database/lists/keywordSearch.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ClassroomWunderlist/database/lists/fetchLatest.java" afterPath="$PROJECT_DIR$/src/com/ClassroomWunderlist/database/lists/fetchLatest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ClassroomWunderlist/database/logIn/dbLoginCheck.java" afterPath="$PROJECT_DIR$/src/com/ClassroomWunderlist/database/logIn/dbLoginCheck.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ClassroomWunderlist/database/logIn/userLoggedIn.java" afterPath="$PROJECT_DIR$/src/com/ClassroomWunderlist/database/logIn/userLoggedIn.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ClassroomWunderlist/database/signIn/dbSignUp.java" afterPath="$PROJECT_DIR$/src/com/ClassroomWunderlist/database/signIn/dbSignUp.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ClassroomWunderlist/main/functions/profile.java" afterPath="$PROJECT_DIR$/src/com/ClassroomWunderlist/main/functions/profile.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ClassroomWunderlist/main/template/userLogin.java" afterPath="$PROJECT_DIR$/src/com/ClassroomWunderlist/main/template/userLogin.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ClassroomWunderlist/main/template/userSignUp.java" afterPath="$PROJECT_DIR$/src/com/ClassroomWunderlist/main/template/userSignUp.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ClassroomWunderlist/main/windows/createNewList/newList.java" afterPath="$PROJECT_DIR$/src/com/ClassroomWunderlist/main/windows/createNewList/newList.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ClassroomWunderlist/main/windows/home/main.java" afterPath="$PROJECT_DIR$/src/com/ClassroomWunderlist/main/windows/home/main.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -20,11 +27,11 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="profile.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="profile.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/ClassroomWunderlist/main/functions/profile.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="161" column="43" lean-forward="true" selection-start-line="161" selection-start-column="43" selection-end-line="161" selection-end-column="43" />
+            <state relative-caret-position="183">
+              <caret line="160" column="44" lean-forward="true" selection-start-line="160" selection-start-column="44" selection-end-line="160" selection-end-column="44" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -32,23 +39,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="newList.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="newList.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/ClassroomWunderlist/main/windows/createNewList/newList.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="421">
-              <caret line="71" column="23" lean-forward="true" selection-start-line="71" selection-start-column="23" selection-end-line="71" selection-end-column="23" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="addNew.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/ClassroomWunderlist/database/lists/addNew.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="30" lean-forward="true" selection-start-line="11" selection-start-column="30" selection-end-line="11" selection-end-column="30" />
+            <state relative-caret-position="1237">
+              <caret line="75" column="0" lean-forward="true" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -97,8 +92,6 @@
         <option value="$PROJECT_DIR$/src/com/ClassroomWunderlist/main/windows/signUp/userSignUp.java" />
         <option value="$PROJECT_DIR$/src/com/ClassroomWunderlist/main/windows/login/userLogin.java" />
         <option value="$PROJECT_DIR$/src/com/ClassroomWunderlist/main/resources/css/main.css" />
-        <option value="$PROJECT_DIR$/src/com/ClassroomWunderlist/main/template/userLogin.java" />
-        <option value="$PROJECT_DIR$/src/com/ClassroomWunderlist/main/template/userSignUp.java" />
         <option value="$PROJECT_DIR$/src/com/ClassroomWunderlist/database/speakOutMessages/addNewMessage.java" />
         <option value="$PROJECT_DIR$/src/com/ClassroomWunderlist/database/speakOutMessages/fetchLatest.java" />
         <option value="$PROJECT_DIR$/src/com/ClassroomWunderlist/database/speakOutMessages/keywordSearch.java" />
@@ -106,18 +99,20 @@
         <option value="$PROJECT_DIR$/src/com/ClassroomWunderlist/main/windows/home/MiscUtils.java" />
         <option value="$PROJECT_DIR$/src/com/ClassroomWunderlist/main/functions/getMotherboardSN.java" />
         <option value="$PROJECT_DIR$/src/com/ClassroomWunderlist/main/functions/loginHome.java" />
-        <option value="$PROJECT_DIR$/src/com/ClassroomWunderlist/main/windows/home/main.java" />
-        <option value="$PROJECT_DIR$/src/com/ClassroomWunderlist/database/signIn/dbSignUp.java" />
-        <option value="$PROJECT_DIR$/src/com/ClassroomWunderlist/database/logIn/userLoggedIn.java" />
-        <option value="$PROJECT_DIR$/src/com/ClassroomWunderlist/database/logIn/dbLoginCheck.java" />
         <option value="$PROJECT_DIR$/src/com/ClassroomWunderlist/database/signIn/userSignOut.java" />
         <option value="$PROJECT_DIR$/src/com/ClassroomWunderlist/utils/property.java" />
-        <option value="$PROJECT_DIR$/src/com/ClassroomWunderlist/database/lists/fetchLatest.java" />
         <option value="$PROJECT_DIR$/src/com/ClassroomWunderlist/database/lists/keywordSearch.java" />
         <option value="$PROJECT_DIR$/src/com/ClassroomWunderlist/database/lists/addNew.java" />
         <option value="$PROJECT_DIR$/src/com/ClassroomWunderlist/main/windows/createNewList/a.java" />
-        <option value="$PROJECT_DIR$/src/com/ClassroomWunderlist/main/windows/createNewList/newList.java" />
+        <option value="$PROJECT_DIR$/src/com/ClassroomWunderlist/database/signIn/dbSignUp.java" />
+        <option value="$PROJECT_DIR$/src/com/ClassroomWunderlist/database/logIn/userLoggedIn.java" />
+        <option value="$PROJECT_DIR$/src/com/ClassroomWunderlist/main/windows/home/main.java" />
+        <option value="$PROJECT_DIR$/src/com/ClassroomWunderlist/main/template/userLogin.java" />
+        <option value="$PROJECT_DIR$/src/com/ClassroomWunderlist/database/logIn/dbLoginCheck.java" />
+        <option value="$PROJECT_DIR$/src/com/ClassroomWunderlist/database/lists/fetchLatest.java" />
+        <option value="$PROJECT_DIR$/src/com/ClassroomWunderlist/main/template/userSignUp.java" />
         <option value="$PROJECT_DIR$/src/com/ClassroomWunderlist/main/functions/profile.java" />
+        <option value="$PROJECT_DIR$/src/com/ClassroomWunderlist/main/windows/createNewList/newList.java" />
       </list>
     </option>
   </component>
@@ -212,6 +207,10 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="windows" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="home" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -338,6 +337,84 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="database" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ClassroomWunderlist" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ClassroomWunderlist" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ClassroomWunderlist" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="database" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="signIn" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ClassroomWunderlist" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ClassroomWunderlist" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ClassroomWunderlist" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="database" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="logIn" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ClassroomWunderlist" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ClassroomWunderlist" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ClassroomWunderlist" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="database" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lists" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -671,7 +748,9 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="antWorkspaceConfiguration">
@@ -769,16 +848,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ClassroomWunderlist/database/utils/DBUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="130" column="25" lean-forward="false" selection-start-line="130" selection-start-column="25" selection-end-line="130" selection-end-column="43" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/ClassroomWunderlist/main/windows/home/MiscUtils.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -797,58 +866,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ClassroomWunderlist/main/template/userSignUp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="113" column="21" lean-forward="true" selection-start-line="113" selection-start-column="21" selection-end-line="113" selection-end-column="21" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ClassroomWunderlist/database/signIn/dbSignUp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="34" column="43" lean-forward="true" selection-start-line="34" selection-start-column="43" selection-end-line="34" selection-end-column="43" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ClassroomWunderlist/database/logIn/userLoggedIn.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="15" column="110" lean-forward="true" selection-start-line="15" selection-start-column="110" selection-end-line="15" selection-end-column="110" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ClassroomWunderlist/main/windows/home/main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="30" column="50" lean-forward="true" selection-start-line="30" selection-start-column="50" selection-end-line="30" selection-end-column="50" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#567#568#0" expanded="true" />
-            <element signature="e#595#596#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ClassroomWunderlist/database/signIn/userSignOut.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="1" lean-forward="true" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/ClassroomWunderlist/utils/property.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -857,50 +874,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ClassroomWunderlist/database/logIn/dbLoginCheck.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
-          <caret line="22" column="19" lean-forward="true" selection-start-line="22" selection-start-column="19" selection-end-line="22" selection-end-column="19" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ClassroomWunderlist/database/lists/fetchLatest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="42" column="0" lean-forward="true" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/ClassroomWunderlist/database/lists/keywordSearch.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="561">
           <caret line="40" column="0" lean-forward="true" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ClassroomWunderlist/main/template/userLogin.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="39">
-          <caret line="67" column="0" lean-forward="false" selection-start-line="67" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ClassroomWunderlist/main/functions/loginHome.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="45" column="53" lean-forward="true" selection-start-line="45" selection-start-column="53" selection-end-line="45" selection-end-column="53" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -917,10 +894,247 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ClassroomWunderlist/main/windows/createNewList/newList.java">
+    <entry file="file://$PROJECT_DIR$/src/com/ClassroomWunderlist/database/signIn/userSignOut.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="421">
-          <caret line="71" column="23" lean-forward="true" selection-start-line="71" selection-start-column="23" selection-end-line="71" selection-end-column="23" />
+        <state relative-caret-position="204">
+          <caret line="12" column="5" lean-forward="true" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ClassroomWunderlist/database/signIn/dbSignUp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="379">
+          <caret line="32" column="62" lean-forward="false" selection-start-line="32" selection-start-column="62" selection-end-line="32" selection-end-column="62" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ClassroomWunderlist/database/logIn/userLoggedIn.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ClassroomWunderlist/main/functions/loginHome.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="765">
+          <caret line="45" column="53" lean-forward="true" selection-start-line="45" selection-start-column="53" selection-end-line="45" selection-end-column="53" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ClassroomWunderlist/main/windows/home/main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="328">
+          <caret line="34" column="66" lean-forward="false" selection-start-line="34" selection-start-column="66" selection-end-line="34" selection-end-column="66" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ClassroomWunderlist/main/template/userLogin.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="353">
+          <caret line="100" column="21" lean-forward="true" selection-start-line="100" selection-start-column="21" selection-end-line="100" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ClassroomWunderlist/database/logIn/dbLoginCheck.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="118">
+          <caret line="38" column="26" lean-forward="true" selection-start-line="38" selection-start-column="26" selection-end-line="38" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/src/lib/sql/mysql-connector-java-5.1.41-bin.jar!/com/mysql/fabric/jdbc/FabricMySQLDriver.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="129">
+          <caret line="35" column="0" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_121/src.zip!/java/lang/String.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="113">
+          <caret line="622" column="0" lean-forward="false" selection-start-line="622" selection-start-column="0" selection-end-line="622" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#124311#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#4677#4678#0" expanded="false" />
+            <element signature="e#4714#4715#0" expanded="false" />
+            <element signature="e#5687#5688#0" expanded="false" />
+            <element signature="e#5750#5751#0" expanded="false" />
+            <element signature="e#13098#13099#0" expanded="false" />
+            <element signature="e#13150#13151#0" expanded="false" />
+            <element signature="e#18781#18782#0" expanded="false" />
+            <element signature="e#18834#18835#0" expanded="false" />
+            <element signature="e#20727#20728#0" expanded="false" />
+            <element signature="e#20771#20772#0" expanded="false" />
+            <element signature="e#21961#21962#0" expanded="false" />
+            <element signature="e#22041#22042#0" expanded="false" />
+            <element signature="e#23072#23073#0" expanded="false" />
+            <element signature="e#23112#23113#0" expanded="false" />
+            <element signature="e#29462#29463#0" expanded="false" />
+            <element signature="e#29533#29534#0" expanded="false" />
+            <element signature="e#36393#36394#0" expanded="false" />
+            <element signature="e#36459#36460#0" expanded="false" />
+            <element signature="e#38369#38370#0" expanded="false" />
+            <element signature="e#38423#38424#0" expanded="false" />
+            <element signature="e#47538#47539#0" expanded="false" />
+            <element signature="e#47602#47603#0" expanded="false" />
+            <element signature="e#55800#55801#0" expanded="false" />
+            <element signature="e#55844#55845#0" expanded="false" />
+            <element signature="e#56437#56438#0" expanded="false" />
+            <element signature="e#56514#56515#0" expanded="false" />
+            <element signature="e#58481#58482#0" expanded="false" />
+            <element signature="e#58518#58519#0" expanded="false" />
+            <element signature="e#62860#62861#0" expanded="false" />
+            <element signature="e#62916#62917#0" expanded="false" />
+            <element signature="e#66457#66458#0" expanded="false" />
+            <element signature="e#66495#66496#0" expanded="false" />
+            <element signature="e#70749#70750#0" expanded="false" />
+            <element signature="e#70802#70803#0" expanded="false" />
+            <element signature="e#78240#78241#0" expanded="false" />
+            <element signature="e#78299#78300#0" expanded="false" />
+            <element signature="e#82616#82617#0" expanded="false" />
+            <element signature="e#82667#82668#0" expanded="false" />
+            <element signature="e#82971#82972#0" expanded="false" />
+            <element signature="e#83020#83021#0" expanded="false" />
+            <element signature="e#94598#94599#0" expanded="false" />
+            <element signature="e#94636#94637#0" expanded="false" />
+            <element signature="e#104675#104676#0" expanded="false" />
+            <element signature="e#104730#104731#0" expanded="false" />
+            <element signature="e#111196#111197#0" expanded="false" />
+            <element signature="e#111251#111252#0" expanded="false" />
+            <element signature="e#113343#113344#0" expanded="false" />
+            <element signature="e#113370#113371#0" expanded="false" />
+            <element signature="e#117893#117894#0" expanded="false" />
+            <element signature="e#117955#117956#0" expanded="false" />
+            <element signature="e#118405#118406#0" expanded="false" />
+            <element signature="e#118444#118445#0" expanded="false" />
+            <element signature="e#119456#119457#0" expanded="false" />
+            <element signature="e#119510#119511#0" expanded="false" />
+            <element signature="e#120159#120160#0" expanded="false" />
+            <element signature="e#120213#120214#0" expanded="false" />
+            <element signature="e#120482#120483#0" expanded="false" />
+            <element signature="e#120521#120522#0" expanded="false" />
+            <element signature="e#120889#120890#0" expanded="false" />
+            <element signature="e#120932#120933#0" expanded="false" />
+            <element signature="e#121727#121728#0" expanded="false" />
+            <element signature="e#121769#121770#0" expanded="false" />
+            <element signature="e#122184#122185#0" expanded="false" />
+            <element signature="e#122223#122224#0" expanded="false" />
+            <element signature="e#122645#122646#0" expanded="false" />
+            <element signature="e#122685#122686#0" expanded="false" />
+            <element signature="e#123115#123116#0" expanded="false" />
+            <element signature="e#123156#123157#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/src/lib/sql/mysql-connector-java-5.1.41-bin.jar!/com/mysql/jdbc/StringUtils.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="113">
+          <caret line="969" column="0" lean-forward="false" selection-start-line="969" selection-start-column="0" selection-end-line="969" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/src/lib/sql/mysql-connector-java-5.1.41-bin.jar!/com/mysql/jdbc/NonRegisteringDriver.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="135" column="0" lean-forward="false" selection-start-line="135" selection-start-column="0" selection-end-line="135" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ClassroomWunderlist/database/utils/DBUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="130">
+          <caret line="28" column="0" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/src/lib/sql/mysql-connector-java-5.1.41-bin.jar!/com/mysql/jdbc/ConnectionImpl.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="2805" column="0" lean-forward="false" selection-start-line="2805" selection-start-column="0" selection-end-line="2805" selection-end-column="0" />
+          <folding>
+            <element signature="e#9435#9436#0" expanded="true" />
+            <element signature="e#9511#9512#0" expanded="true" />
+            <element signature="e#9791#9792#0" expanded="true" />
+            <element signature="e#9867#9868#0" expanded="true" />
+            <marker date="1491279844347" expanded="true" signature="88443:88472" ph=" SELECT statement" />
+            <marker date="1491279844347" expanded="true" signature="101988:102015" ph=" SELECT statement" />
+            <marker date="1491279844347" expanded="true" signature="104472:104501" ph=" SELECT statement" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/src/lib/sql/mysql-connector-java-5.1.41-bin.jar!/com/mysql/jdbc/PreparedStatement.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="104">
+          <caret line="1007" column="0" lean-forward="false" selection-start-line="1007" selection-start-column="0" selection-end-line="1007" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/src/lib/sql/mysql-connector-java-5.1.41-bin.jar!/com/mysql/jdbc/RowDataStatic.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="79" column="0" lean-forward="false" selection-start-line="79" selection-start-column="0" selection-end-line="79" selection-end-column="0" />
+          <folding>
+            <element signature="e#1341#1342#0" expanded="true" />
+            <element signature="e#1374#1375#0" expanded="true" />
+            <element signature="e#1858#1859#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/src/lib/sql/mysql-connector-java-5.1.41-bin.jar!/com/mysql/jdbc/ResultSetImpl.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="146">
+          <caret line="2964" column="0" lean-forward="false" selection-start-line="2964" selection-start-column="0" selection-end-line="2964" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ClassroomWunderlist/database/lists/fetchLatest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="27" column="22" lean-forward="true" selection-start-line="27" selection-start-column="22" selection-end-line="27" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ClassroomWunderlist/main/template/userSignUp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="98">
+          <caret line="101" column="95" lean-forward="false" selection-start-line="101" selection-start-column="95" selection-end-line="101" selection-end-column="95" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -929,8 +1143,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/ClassroomWunderlist/main/functions/profile.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="161" column="43" lean-forward="true" selection-start-line="161" selection-start-column="43" selection-end-line="161" selection-end-column="43" />
+        <state relative-caret-position="183">
+          <caret line="160" column="44" lean-forward="true" selection-start-line="160" selection-start-column="44" selection-end-line="160" selection-end-column="44" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ClassroomWunderlist/main/windows/createNewList/newList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1237">
+          <caret line="75" column="0" lean-forward="true" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

@@ -31,7 +31,8 @@ public class profile {
 
     public static Label createView;
 
-    public static Scene main(String companyName, String emailId){
+
+    public static Scene main(String companyName, String completeName, String emailId){
         BorderPane profilePane = new BorderPane();
 
         BorderPane options = new BorderPane();
@@ -41,7 +42,7 @@ public class profile {
         user.setPadding(new Insets(10));
         user.setAlignment(Pos.TOP_CENTER);
 
-        fullName = new Label("Shubham Madheysia");
+        fullName = new Label(completeName);
         fullName.setFont(new Font("Cambria", 20));
         fullName.setTextFill(Color.web("#ededed"));
 
@@ -158,21 +159,18 @@ public class profile {
     }
 
     public static void addlist(String name){
-        Label newList = new Label(name);
-        newList.setPadding(new Insets(10));
-        newList.setFont(new Font("Cambria", 15));
-        newList.setTextFill(Color.web("#171717"));
-        StackPane newListPane = new StackPane(newList);
-        newListPane.setAlignment(Pos.BASELINE_LEFT);
-        newListPane.setStyle("-fx-background-color: #f4f4ff");
-        newListPane.setOnMouseEntered(e-> newListPane.setStyle("-fx-background-color: #dbdbe5"));
-        newListPane.setOnMouseExited(e-> newListPane.setStyle("-fx-background-color: #f4f4ff"));
-        newListPane.setCursor(Cursor.HAND);
-        lists.getChildren().add(newListPane);
-    }
-
-    public static void toggleTextColors(String courseColor, String findColor, String speakoutColor, String submissionColor)
-    {
-//        course.setTextFill(Color.web(courseColor));
+        if (!name.isEmpty()){
+            Label newList = new Label(name);
+            newList.setPadding(new Insets(10));
+            newList.setFont(new Font("Cambria", 15));
+            newList.setTextFill(Color.web("#171717"));
+            StackPane newListPane = new StackPane(newList);
+            newListPane.setAlignment(Pos.BASELINE_LEFT);
+            newListPane.setStyle("-fx-background-color: #f4f4ff");
+            newListPane.setOnMouseEntered(e-> newListPane.setStyle("-fx-background-color: #dbdbe5"));
+            newListPane.setOnMouseExited(e-> newListPane.setStyle("-fx-background-color: #f4f4ff"));
+            newListPane.setCursor(Cursor.HAND);
+            lists.getChildren().add(newListPane);
+        }
     }
 }

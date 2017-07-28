@@ -19,8 +19,11 @@ import javafx.stage.Stage;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class newList {
+    public static final Pattern VALID_STRING_REGEX = Pattern.compile("^\\s*$", Pattern.CASE_INSENSITIVE);
 
     public static String newList(String companyName){
         Stage newList = new Stage();
@@ -66,10 +69,17 @@ public class newList {
 
         String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
 
-        if (!name[0].equals(""))
+        if (!name[0].equals("") && !validate(name[0]))
             addNew.add(timeStamp,companyName,name[0]);
+        else
+            name[0]="";
 
         return name[0];
+    }
+
+    public static boolean validate(String Str) {
+        Matcher matcher = VALID_STRING_REGEX .matcher(Str);
+        return matcher.find();
     }
 
 }

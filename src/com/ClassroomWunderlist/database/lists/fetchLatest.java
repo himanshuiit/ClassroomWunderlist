@@ -12,8 +12,6 @@ public class fetchLatest {
 
     public static String[][] fetchlatest(String companyName) {
 
-        VBox noticeList = new VBox();
-
         Connection con = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
@@ -32,16 +30,20 @@ public class fetchLatest {
             response = new String[size+1][2];
             rs.beforeFirst();
 
-            if (size>0)
+            if (size>0){
                 response[0][0] = "SUCCESS";
 
-            int count = 1;
-            while (rs.next()){
-                response[count][0] = rs.getString("timestamp");
-                response[count++][1] = rs.getString("listName");
+                int count = 1;
+                while (rs.next()){
+                    response[count][0] = rs.getString("timestamp");
+                    response[count++][1] = rs.getString("listName");
+                }
             }
+            else
+                response[0][0] = "NO Results found";
 
         } catch (Exception e) {
+            e.printStackTrace();
             response[0][0] = e.getMessage();
         } finally {
             DBUtils.closeAll(rs, stmt, con);
