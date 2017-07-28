@@ -2,8 +2,6 @@ package com.ClassroomWunderlist.database.lists;
 
 import com.ClassroomWunderlist.database.utils.DBUtils;
 
-import javafx.scene.layout.VBox;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -48,6 +46,5 @@ public class keywordSearch {
             return response;
         }
     }
-
 
 }

@@ -2,13 +2,12 @@ package com.ClassroomWunderlist.main.functions;
 
 import com.ClassroomWunderlist.database.lists.keywordSearch;
 import com.ClassroomWunderlist.database.signIn.userSignOut;
+import com.ClassroomWunderlist.main.windows.createNewList.newList;
 import com.ClassroomWunderlist.main.windows.home.main;
 import com.ClassroomWunderlist.database.lists.fetchLatest;
 
 import de.jensd.fx.glyphs.GlyphsDude;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.SimpleBooleanProperty;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Cursor;
@@ -18,7 +17,6 @@ import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -29,6 +27,8 @@ public class profile {
     public static Label fullName;
     public static Label company;
     public static Label assignedToMe;
+    public static VBox lists;
+
     public static Label createView;
 
     public static Scene main(String companyName, String emailId){
@@ -74,29 +74,15 @@ public class profile {
         searchlists.setPrefColumnCount(15);
         searchlists.setFont(Font.font(18));
         searchlists.setStyle("-fx-background-color: transparent; -fx-text-inner-color: #fff;");
-//        searchNotice.textProperty().addListener((observable, oldValue, newValue) -> {
-//            fetchedMessages.getChildren().clear();
-//            fetchedMessages.getChildren().add(keywordSearch.keywordSearch(emailId,newValue));
-//        });
         StackPane searchPane = new StackPane(searchlists);
         searchPane.setPadding(new Insets(0,5,-10,5));
 
-        VBox lists = new VBox(15);
+        lists = new VBox(15);
 
         String[][] listFetc = fetchLatest.fetchlatest(companyName);
         if (listFetc[0][0].equals("SUCCESS")){
-            for (int i=1; i<listFetc.length;++i){
-                String listName = listFetc[i][1];
-                Label newList = new Label(listName);
-                newList.setPadding(new Insets(10));
-                newList.setFont(new Font("Cambria", 20));
-                newList.setTextFill(Color.web("#171717"));
-                StackPane newListPane = new StackPane(newList);
-                newListPane.setAlignment(Pos.BASELINE_LEFT);
-                newListPane.setStyle("-fx-background-color: #f4f4ff");
-                newListPane.setCursor(Cursor.HAND);
-                lists.getChildren().add(newListPane);
-            }
+            for (int i=1; i<listFetc.length;++i)
+                addlist(listFetc[i][1]);
         }
 
         ScrollPane scrollerList = new ScrollPane(lists);
@@ -109,23 +95,10 @@ public class profile {
             lists.getChildren().clear();
             String[][] searchedlist = keywordSearch.keywordSearch(companyName,searchlists.getText());
             if (searchedlist[0][0].equals("SUCCESS")){
-                for (int i=1; i<searchedlist.length;++i){
-                    String listName = searchedlist[i][1];
-                    Label newList = new Label(listName);
-                    newList.setPadding(new Insets(10));
-                    newList.setFont(new Font("Cambria", 20));
-                    newList.setTextFill(Color.web("#171717"));
-                    StackPane newListPane = new StackPane(newList);
-                    newListPane.setAlignment(Pos.BASELINE_LEFT);
-                    newListPane.setStyle("-fx-background-color: #f4f4ff");
-                    newListPane.setCursor(Cursor.HAND);
-                    lists.getChildren().add(newListPane);
-                }
+                for (int i=1; i<searchedlist.length;++i)
+                    addlist(searchedlist[i][1]);
             }
         });
-
-
-        VBox allLists = new VBox(15);
 
         createView = GlyphsDude.createIconLabel( FontAwesomeIcon.PLUS,
                 "  Create View",
@@ -139,7 +112,9 @@ public class profile {
         createViewPane.setAlignment(Pos.BASELINE_LEFT);
         createViewPane.setStyle("-fx-background-color: transparent");
         createViewPane.setCursor(Cursor.HAND);
+        createViewPane.setOnMouseClicked(e-> addlist(newList.newList(companyName)) );
 
+        VBox allLists = new VBox(15);
         allLists.getChildren().addAll(assigned, searchPane, scrollerList, createViewPane);
 
         options.setCenter(allLists);
@@ -161,26 +136,6 @@ public class profile {
 
         BorderPane optionData = new BorderPane();
 
-        createViewPane.setOnMouseClicked(e-> {
-
-            Label newList = new Label("Testing");
-            newList.setFont(new Font("Cambria", 20));
-            newList.setTextFill(Color.web("#171717"));
-            newList.setPadding(new Insets(10));
-            StackPane newListPane = new StackPane(newList);
-            newListPane.setAlignment(Pos.BASELINE_LEFT);
-            newListPane.setStyle("-fx-background-color: #f4f4ff");
-            newListPane.setCursor(Cursor.HAND);
-
-//        submissionPane.setOnMouseClicked(e-> {
-//            optionData.setTop(submissions.tutorials(emailID.getText()));
-//            toggleTextColors("#171717","#171717","#171717","red");
-//            submissions.tutorials.requestFocus();
-//        });
-
-            lists.getChildren().add(newListPane);
-        });
-
         logoutPane.setOnMouseClicked(e-> {
             userSignOut.userSignOut();
             main.window.setScene(loginHome.homeView());
@@ -199,8 +154,21 @@ public class profile {
         options.setStyle("-fx-background-image: url('" + image + "'); " +
                 "-fx-background-position: center center; " +
                 "-fx-background-repeat: stretch;");
-
         return scene;
+    }
+
+    public static void addlist(String name){
+        Label newList = new Label(name);
+        newList.setPadding(new Insets(10));
+        newList.setFont(new Font("Cambria", 15));
+        newList.setTextFill(Color.web("#171717"));
+        StackPane newListPane = new StackPane(newList);
+        newListPane.setAlignment(Pos.BASELINE_LEFT);
+        newListPane.setStyle("-fx-background-color: #f4f4ff");
+        newListPane.setOnMouseEntered(e-> newListPane.setStyle("-fx-background-color: #dbdbe5"));
+        newListPane.setOnMouseExited(e-> newListPane.setStyle("-fx-background-color: #f4f4ff"));
+        newListPane.setCursor(Cursor.HAND);
+        lists.getChildren().add(newListPane);
     }
 
     public static void toggleTextColors(String courseColor, String findColor, String speakoutColor, String submissionColor)
