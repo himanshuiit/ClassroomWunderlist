@@ -10,15 +10,15 @@ import java.sql.ResultSet;
 
 public class keywordSearch {
 
-    public static VBox keywordSearch(String currentUserMailId, String keyword) {
-
-        VBox noticeList = new VBox();
+    public static String[][] keywordSearch(String companyName, String keyword) {
 
         Connection con = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
 
-        String query = DBUtils.prepareSelectQuery(" * ", "classroomdbms.speakouts", "( message LIKE '%"+keyword+"%' OR emailId LIKE '%"+keyword+"%' )","ORDER BY timestamp asc" );
+        String[][] response = new String[1][1];
+
+        String query = DBUtils.prepareSelectQuery(" * ", "classroomwunderlist.lists", "(companyName = '"+companyName+"' AND listName LIKE '%"+keyword+"%' )","ORDER BY timestamp asc" );
 
         try {
             con = DBUtils.getConnection();
@@ -27,27 +27,25 @@ public class keywordSearch {
 
             rs.last();
             int size = rs.getRow();
-//            if (size==0)
-//                noticeList.getChildren().add(message.errorformatmessage());
-
+            response = new String[size+1][2];
             rs.beforeFirst();
 
-            while (rs.next()){
-                String timestamp = rs.getString("timestamp");
-                String emailId = rs.getString("emailId");
-                String notice = rs.getString("message");
+            if (size>0)
+                response[0][0] = "SUCCESS";
+            else
+                response[0][0] = "FAILED";
 
-//                if (emailId.equals(currentUserMailId))
-//                    noticeList.getChildren().add(message.rightformatmessage(timestamp, notice));
-//                else
-//                    noticeList.getChildren().add(message.leftformatmessage(timestamp, emailId, notice));
+            int count = 1;
+            while (rs.next()){
+                response[count][0] = rs.getString("timestamp");
+                response[count++][1] = rs.getString("listName");
             }
 
         } catch (Exception e) {
-//            noticeList.getChildren().add(message.errorformatmessage());
+            response[0][0] = e.getMessage();
         } finally {
             DBUtils.closeAll(rs, stmt, con);
-            return noticeList;
+            return response;
         }
     }
 

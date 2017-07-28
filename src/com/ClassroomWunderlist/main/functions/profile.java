@@ -1,7 +1,9 @@
 package com.ClassroomWunderlist.main.functions;
 
+import com.ClassroomWunderlist.database.lists.keywordSearch;
 import com.ClassroomWunderlist.database.signIn.userSignOut;
 import com.ClassroomWunderlist.main.windows.home.main;
+import com.ClassroomWunderlist.database.lists.fetchLatest;
 
 import de.jensd.fx.glyphs.GlyphsDude;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
@@ -30,7 +32,6 @@ public class profile {
     public static Label createView;
 
     public static Scene main(String companyName, String emailId){
-        final BooleanProperty firstTime = new SimpleBooleanProperty(true); // Variable to store the focus on stage load
         BorderPane profilePane = new BorderPane();
 
         BorderPane options = new BorderPane();
@@ -81,16 +82,45 @@ public class profile {
         searchPane.setPadding(new Insets(0,5,-10,5));
 
         VBox lists = new VBox(15);
+
+        String[][] listFetc = fetchLatest.fetchlatest(companyName);
+        if (listFetc[0][0].equals("SUCCESS")){
+            for (int i=1; i<listFetc.length;++i){
+                String listName = listFetc[i][1];
+                Label newList = new Label(listName);
+                newList.setPadding(new Insets(10));
+                newList.setFont(new Font("Cambria", 20));
+                newList.setTextFill(Color.web("#171717"));
+                StackPane newListPane = new StackPane(newList);
+                newListPane.setAlignment(Pos.BASELINE_LEFT);
+                newListPane.setStyle("-fx-background-color: #f4f4ff");
+                newListPane.setCursor(Cursor.HAND);
+                lists.getChildren().add(newListPane);
+            }
+        }
+
         ScrollPane scrollerList = new ScrollPane(lists);
         scrollerList.setStyle("-fx-background-color: transparent");
         scrollerList.setFitToWidth(true);
         scrollerList.setVvalue(1.0);
         scrollerList.vvalueProperty().bind(lists.heightProperty());
 
-        searchlists.focusedProperty().addListener((observable,  oldValue,  newValue) -> {
-            if(newValue && firstTime.get()){
-                scrollerList.requestFocus(); // Delegate the focus to container
-                firstTime.setValue(false); // Variable value changed for future references
+        searchlists.textProperty().addListener((observable, oldValue, newValue) -> {
+            lists.getChildren().clear();
+            String[][] searchedlist = keywordSearch.keywordSearch(companyName,searchlists.getText());
+            if (searchedlist[0][0].equals("SUCCESS")){
+                for (int i=1; i<searchedlist.length;++i){
+                    String listName = searchedlist[i][1];
+                    Label newList = new Label(listName);
+                    newList.setPadding(new Insets(10));
+                    newList.setFont(new Font("Cambria", 20));
+                    newList.setTextFill(Color.web("#171717"));
+                    StackPane newListPane = new StackPane(newList);
+                    newListPane.setAlignment(Pos.BASELINE_LEFT);
+                    newListPane.setStyle("-fx-background-color: #f4f4ff");
+                    newListPane.setCursor(Cursor.HAND);
+                    lists.getChildren().add(newListPane);
+                }
             }
         });
 
@@ -142,14 +172,14 @@ public class profile {
             newListPane.setStyle("-fx-background-color: #f4f4ff");
             newListPane.setCursor(Cursor.HAND);
 
-            lists.getChildren().add(newListPane);
-        });
-
 //        submissionPane.setOnMouseClicked(e-> {
 //            optionData.setTop(submissions.tutorials(emailID.getText()));
 //            toggleTextColors("#171717","#171717","#171717","red");
 //            submissions.tutorials.requestFocus();
 //        });
+
+            lists.getChildren().add(newListPane);
+        });
 
         logoutPane.setOnMouseClicked(e-> {
             userSignOut.userSignOut();

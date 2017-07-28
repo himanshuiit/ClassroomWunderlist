@@ -32,17 +32,17 @@ public class fetchLatest {
             response = new String[size+1][2];
             rs.beforeFirst();
 
-            if (size<1)
+            if (size>0)
                 response[0][0] = "SUCCESS";
 
             int count = 1;
             while (rs.next()){
                 response[count][0] = rs.getString("timestamp");
-                response[count++][0] = rs.getString("listName");
+                response[count++][1] = rs.getString("listName");
             }
 
         } catch (Exception e) {
-            response[0][0] = "SUCCESS";
+            response[0][0] = e.getMessage();
         } finally {
             DBUtils.closeAll(rs, stmt, con);
             return response;
