@@ -38,7 +38,7 @@ public class profile {
     public static Scene main(String companyName, String completeName, String emailId){
         BorderPane profilePane = new BorderPane();
 
-        optionData = new BorderPane(assignedbugs.view(emailId));
+        optionData = new BorderPane(assignedbugs.view(companyName, emailId));
 
         BorderPane options = new BorderPane();
         options.setPrefWidth(220);
@@ -75,7 +75,7 @@ public class profile {
         assigned.setStyle("-fx-background-color: #f4f4ff");
         assigned.setCursor(Cursor.HAND);
 
-        assigned.setOnMouseClicked(e-> optionData.setCenter(assignedbugs.view(emailId)));
+        assigned.setOnMouseClicked(e-> optionData.setCenter(assignedbugs.view(companyName, emailId)));
 
         TextField searchlists = new TextField();
         searchlists.setPromptText("Search by keyword");
@@ -178,7 +178,6 @@ public class profile {
             newListPane.setOnMouseExited(e-> newListPane.setStyle("-fx-background-color: #f4f4ff"));
             newListPane.setCursor(Cursor.HAND);
             newListPane.setOnMouseClicked(e-> optionData.setCenter(bugsInList.view(company.getText(),name)));
-
             lists.getChildren().add(newListPane);
         }
     }
