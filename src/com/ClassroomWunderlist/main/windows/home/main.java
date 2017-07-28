@@ -3,6 +3,7 @@ package com.ClassroomWunderlist.main.windows.home;
 import com.ClassroomWunderlist.database.logIn.userLoggedIn;
 import com.ClassroomWunderlist.main.functions.loginHome;
 import com.ClassroomWunderlist.main.functions.profile;
+import com.ClassroomWunderlist.main.functions.getMotherboardSN;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -23,7 +24,8 @@ public class main extends Application {
         window=primaryStage;
         window.setTitle("Classroom DBMS");
 
-        String[] status = userLoggedIn.userLoggedIn();
+        String userID = getMotherboardSN.getMotherboardSN();
+        String[] status = userLoggedIn.userLoggedIn(userID);
 
         if (!status[0].equals("success"))
             window.setScene(loginHome.homeView());

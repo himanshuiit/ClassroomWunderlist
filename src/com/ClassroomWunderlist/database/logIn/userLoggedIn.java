@@ -8,12 +8,12 @@ import java.sql.ResultSet;
 
 public class userLoggedIn {
 
-    public static String[] userLoggedIn() {
+    public static String[] userLoggedIn(String id) {
         Connection con = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
 
-        String query = DBUtils.prepareSelectQuery(" * ", "classroomwunderlist.currentuser", "" );
+        String query = DBUtils.prepareSelectQuery(" * ", "classroomwunderlist.currentuser", "id = '"+id+"'" );
 
         String[] status = {"ongoing","",""};
 
