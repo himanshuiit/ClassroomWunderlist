@@ -152,7 +152,7 @@ public class profile {
 //        });
 
         logoutPane.setOnMouseClicked(e-> {
-            userSignOut.userSignOut(emailId);
+            userSignOut.userSignOut();
             main.window.setScene(loginHome.homeView());
         });
 

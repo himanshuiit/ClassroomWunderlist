@@ -5,7 +5,7 @@ import com.ClassroomWunderlist.main.functions.getMotherboardSN;
 
 public class userSignOut {
 
-    public static void userSignOut(String emailId) {
+    public static void userSignOut() {
 
         String userID = getMotherboardSN.getMotherboardSN();
 
