@@ -31,9 +31,12 @@ public class profile {
 
     public static Label createView;
 
+    public static BorderPane optionData;
 
     public static Scene main(String companyName, String completeName, String emailId){
         BorderPane profilePane = new BorderPane();
+
+        optionData = new BorderPane();
 
         BorderPane options = new BorderPane();
         options.setPrefWidth(220);
@@ -69,6 +72,10 @@ public class profile {
         assigned.setAlignment(Pos.BASELINE_LEFT);
         assigned.setStyle("-fx-background-color: #f4f4ff");
         assigned.setCursor(Cursor.HAND);
+
+        assigned.setOnMouseClicked(e->{
+//            optionData.setCenter();
+        });
 
         TextField searchlists = new TextField();
         searchlists.setPromptText("Search by keyword");
@@ -113,7 +120,9 @@ public class profile {
         createViewPane.setAlignment(Pos.BASELINE_LEFT);
         createViewPane.setStyle("-fx-background-color: transparent");
         createViewPane.setCursor(Cursor.HAND);
-        createViewPane.setOnMouseClicked(e-> addlist(newList.newList(companyName)) );
+
+        newList ob = new newList();
+        createViewPane.setOnMouseClicked(e->  addlist(ob.newList(companyName)) );
 
         VBox allLists = new VBox(15);
         allLists.getChildren().addAll(assigned, searchPane, scrollerList, createViewPane);
@@ -133,14 +142,12 @@ public class profile {
         logoutPane.setStyle("-fx-background-color: #f4f4ff");
         logoutPane.setCursor(Cursor.HAND);
 
-        options.setBottom(logoutPane);
-
-        BorderPane optionData = new BorderPane();
-
         logoutPane.setOnMouseClicked(e-> {
             userSignOut.userSignOut();
             main.window.setScene(loginHome.homeView());
         });
+
+        options.setBottom(logoutPane);
 
         profilePane.setLeft(options);
         profilePane.setCenter(optionData);
@@ -170,6 +177,10 @@ public class profile {
             newListPane.setOnMouseEntered(e-> newListPane.setStyle("-fx-background-color: #dbdbe5"));
             newListPane.setOnMouseExited(e-> newListPane.setStyle("-fx-background-color: #f4f4ff"));
             newListPane.setCursor(Cursor.HAND);
+            newListPane.setOnMouseClicked(e->{
+
+            });
+
             lists.getChildren().add(newListPane);
         }
     }

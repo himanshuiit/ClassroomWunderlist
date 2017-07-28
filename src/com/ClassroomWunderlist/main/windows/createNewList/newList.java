@@ -8,6 +8,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.layout.BorderPane;
@@ -25,7 +26,7 @@ import java.util.regex.Pattern;
 public class newList {
     public static final Pattern VALID_STRING_REGEX = Pattern.compile("^\\s*$", Pattern.CASE_INSENSITIVE);
 
-    public static String newList(String companyName){
+    public String newList(String companyName){
         Stage newList = new Stage();
 
         final String[] name = {""};
@@ -63,6 +64,8 @@ public class newList {
         );
 
         newList.setScene(scene);
+        newList.getIcons().add(new Image(getClass().getResourceAsStream("../../resources/images/ClassroomWunderlist.png")));
+        newList.setTitle("Create New List");
         newList.setResizable(false);
         newList.initModality(Modality.APPLICATION_MODAL);
         newList.showAndWait();
