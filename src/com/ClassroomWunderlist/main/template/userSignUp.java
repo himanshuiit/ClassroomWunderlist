@@ -99,7 +99,7 @@ public class userSignUp {
             else{
                 status = dbSignUp.userSignUp(companyName.getText(), fullName.getText(),email.getText(),password.getText());
                 if (status=="success") {
-                    main.window.setScene(profile.main());
+                    main.window.setScene(profile.main(companyName.getText(), email.getText()));
                 }
                 else
                     error.setText(status);

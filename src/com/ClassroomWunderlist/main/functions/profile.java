@@ -1,21 +1,20 @@
 package com.ClassroomWunderlist.main.functions;
 
-//import com.ClassroomDBMS.database.signIn.deleteAccount;
-//import com.ClassroomDBMS.database.signIn.userSignOut;
-//import com.ClassroomDBMS.main.templates.Home.courseInfo;
-//import com.ClassroomDBMS.main.templates.editProfile.*;
-//import com.ClassroomDBMS.main.templates.search.peopleSearch;
-//import com.ClassroomDBMS.main.templates.speakouts.notices;
-//import com.ClassroomDBMS.main.templates.tutorialSubmission.submissions;
+import com.ClassroomWunderlist.database.signIn.userSignOut;
 import com.ClassroomWunderlist.main.windows.home.main;
 
 import de.jensd.fx.glyphs.GlyphsDude;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Cursor;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Label;
+import javafx.scene.control.ContentDisplay;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
@@ -23,125 +22,97 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
-import java.util.Optional;
-
 public class profile {
 
     public static Label fullName;
-    public static Label emailID;
-    public static Label phoneNumbercollege;
-    public static Label course;
-    public static Label findPeople;
-    public static Label speakOut;
-    public static Label submission;
+    public static Label company;
+    public static Label assignedToMe;
+    public static Label createView;
 
-    public static Scene main(){
-        BorderPane userOptions = new BorderPane();
-
-        BorderPane optionDetails = new BorderPane();
-        optionDetails.setStyle("-fx-background-color: #171717");
-        optionDetails.setPrefWidth(220);
+    public static Scene main(String companyName, String emailId){
+        final BooleanProperty firstTime = new SimpleBooleanProperty(true); // Variable to store the focus on stage load
+        BorderPane profilePane = new BorderPane();
 
         BorderPane options = new BorderPane();
-        VBox userData = new VBox(10);
-        userData.setPadding(new Insets(0,0,20,0));
-        userData.setAlignment(Pos.TOP_CENTER);
+        options.setPrefWidth(220);
 
-        Label userLOGO = GlyphsDude.createIconLabel( FontAwesomeIcon.USER_SECRET,
-                "",
-                "100",
-                "0",
-                ContentDisplay.LEFT );
-        userLOGO.setTextFill(Color.web("grey"));
-        userLOGO.setPadding(new Insets(15,0,0,10));
-        StackPane logo = new StackPane(userLOGO);
-        logo.setStyle("-fx-background-color: #fff");
+        VBox user = new VBox(10);
+        user.setPadding(new Insets(10));
+        user.setAlignment(Pos.TOP_CENTER);
 
-        fullName = new Label("profileDetails[1]");
-        fullName.setFont(new Font("Cambria", 25));
+        fullName = new Label("Shubham Madheysia");
+        fullName.setFont(new Font("Cambria", 20));
         fullName.setTextFill(Color.web("#ededed"));
 
-        emailID = new Label("profileDetails[2]");
-        emailID.setFont(new Font("Cambria", 15));
-        emailID.setTextFill(Color.web("#ededed"));
+        company = GlyphsDude.createIconLabel( FontAwesomeIcon.BANK,
+                companyName,
+                "15",
+                "12",
+                ContentDisplay.LEFT );
+        company.setFont(new Font("Cambria", 12));
+        company.setTextFill(Color.web("#ededed"));
 
-        phoneNumbercollege = new Label("profileDetails[5]");
-        phoneNumbercollege.setFont(new Font("Cambria", 15));
-        phoneNumbercollege.setTextFill(Color.web("#ededed"));
-        phoneNumbercollege.setWrapText(true);
+        user.getChildren().addAll(fullName, company);
+        options.setTop(user);
 
-        HBox profileSetting = new HBox(10);
-        profileSetting.setAlignment(Pos.TOP_CENTER);
-
-        Button editButton = GlyphsDude.createIconButton(FontAwesomeIcon.EDIT,"Edit Profile");
-        editButton.setCursor(Cursor.HAND);
-
-        Button deleteButton = GlyphsDude.createIconButton(FontAwesomeIcon.CUT,"Delete Profile");
-        deleteButton.setCursor(Cursor.HAND);
-
-        profileSetting.getChildren().addAll(editButton,deleteButton);
-
-        userData.getChildren().addAll(logo,fullName,emailID,phoneNumbercollege,profileSetting);
-        userData.setStyle("-fx-border-color: #fff;-fx-border-width: 0 0 2 0;-fx-underline: true;");
-
-        options.setTop(userData);
-
-        VBox buttons = new VBox(15);
-
-        course = GlyphsDude.createIconLabel( FontAwesomeIcon.USERS,
-                "  Home",
+        assignedToMe = GlyphsDude.createIconLabel( FontAwesomeIcon.USER_PLUS,
+                "  Assigned to me",
                 "20",
                 "18",
                 ContentDisplay.LEFT );
-        course.setFont(new Font("Cambria", 20));
-        course.setTextFill(Color.web("#171717"));
-        course.setPadding(new Insets(10));
-        StackPane coursePane = new StackPane(course);
-        coursePane.setAlignment(Pos.BASELINE_LEFT);
-        coursePane.setStyle("-fx-background-color: grey");
-        coursePane.setCursor(Cursor.HAND);
+        assignedToMe.setFont(new Font("Cambria", 20));
+        assignedToMe.setTextFill(Color.web("#171717"));
+        assignedToMe.setPadding(new Insets(10));
+        StackPane assigned = new StackPane(assignedToMe);
+        assigned.setAlignment(Pos.BASELINE_LEFT);
+        assigned.setStyle("-fx-background-color: #f4f4ff");
+        assigned.setCursor(Cursor.HAND);
 
-        findPeople = GlyphsDude.createIconLabel( FontAwesomeIcon.SEARCH,
-                "  Find Students",
+        TextField searchlists = new TextField();
+        searchlists.setPromptText("Search by keyword");
+        searchlists.setPrefColumnCount(15);
+        searchlists.setFont(Font.font(18));
+        searchlists.setStyle("-fx-background-color: transparent; -fx-text-inner-color: #fff;");
+//        searchNotice.textProperty().addListener((observable, oldValue, newValue) -> {
+//            fetchedMessages.getChildren().clear();
+//            fetchedMessages.getChildren().add(keywordSearch.keywordSearch(emailId,newValue));
+//        });
+        StackPane searchPane = new StackPane(searchlists);
+        searchPane.setPadding(new Insets(0,5,-10,5));
+
+        VBox lists = new VBox(15);
+        ScrollPane scrollerList = new ScrollPane(lists);
+        scrollerList.setStyle("-fx-background-color: transparent");
+        scrollerList.setFitToWidth(true);
+        scrollerList.setVvalue(1.0);
+        scrollerList.vvalueProperty().bind(lists.heightProperty());
+
+        searchlists.focusedProperty().addListener((observable,  oldValue,  newValue) -> {
+            if(newValue && firstTime.get()){
+                scrollerList.requestFocus(); // Delegate the focus to container
+                firstTime.setValue(false); // Variable value changed for future references
+            }
+        });
+
+
+        VBox allLists = new VBox(15);
+
+        createView = GlyphsDude.createIconLabel( FontAwesomeIcon.PLUS,
+                "  Create View",
                 "20",
                 "18",
                 ContentDisplay.LEFT );
-        findPeople.setFont(new Font("Cambria", 20));
-        findPeople.setTextFill(Color.web("#171717"));
-        findPeople.setPadding(new Insets(10));
-        StackPane findPeoplePane = new StackPane(findPeople);
-        findPeoplePane.setAlignment(Pos.BASELINE_LEFT);
-        findPeoplePane.setStyle("-fx-background-color: grey");
-        findPeoplePane.setCursor(Cursor.HAND);
+        createView.setFont(new Font("Cambria", 20));
+        createView.setTextFill(Color.web("#171717"));
+        createView.setPadding(new Insets(10));
+        StackPane createViewPane = new StackPane(createView);
+        createViewPane.setAlignment(Pos.BASELINE_LEFT);
+        createViewPane.setStyle("-fx-background-color: transparent");
+        createViewPane.setCursor(Cursor.HAND);
 
-        speakOut = GlyphsDude.createIconLabel( FontAwesomeIcon.WECHAT,
-                "  SpeakOut",
-                "20",
-                "18",
-                ContentDisplay.LEFT );
-        speakOut.setFont(new Font("Cambria", 20));
-        speakOut.setTextFill(Color.web("#171717"));
-        speakOut.setPadding(new Insets(10));
-        StackPane speakOutPane = new StackPane(speakOut);
-        speakOutPane.setAlignment(Pos.BASELINE_LEFT);
-        speakOutPane.setStyle("-fx-background-color: grey");
-        speakOutPane.setCursor(Cursor.HAND);
+        allLists.getChildren().addAll(assigned, searchPane, scrollerList, createViewPane);
 
-        submission = GlyphsDude.createIconLabel( FontAwesomeIcon.UPLOAD,
-                "  Submission",
-                "20",
-                "18",
-                ContentDisplay.LEFT );
-        submission.setFont(new Font("Cambria", 20));
-        submission.setTextFill(Color.web("#171717"));
-        submission.setPadding(new Insets(10));
-        StackPane submissionPane = new StackPane(submission);
-        submissionPane.setAlignment(Pos.BASELINE_LEFT);
-        submissionPane.setStyle("-fx-background-color: grey");
-        submissionPane.setCursor(Cursor.HAND);
-
-        buttons.getChildren().addAll(coursePane, findPeoplePane, speakOutPane, submissionPane);
-        options.setCenter(buttons);
+        options.setCenter(allLists);
 
         Label logout = GlyphsDude.createIconLabel( FontAwesomeIcon.SIGN_OUT,
                 "  Log Out",
@@ -153,81 +124,49 @@ public class profile {
         logout.setPadding(new Insets(10));
         StackPane logoutPane = new StackPane(logout);
         logoutPane.setAlignment(Pos.BASELINE_LEFT);
-        logoutPane.setStyle("-fx-background-color: grey");
+        logoutPane.setStyle("-fx-background-color: #f4f4ff");
         logoutPane.setCursor(Cursor.HAND);
 
         options.setBottom(logoutPane);
-        optionDetails.setCenter(options);
 
         BorderPane optionData = new BorderPane();
 
-//        optionData.setTop(courseInfo.TAinfo());
-//        toggleTextColors("red", "#171717","#171717","#171717");
-//
-//        editButton.setOnAction(e-> {
-//            e.consume();
-//            updateUserDetails ob = new updateUserDetails();
-//            optionData.setTop(ob.updateUserDetails());
-//            toggleTextColors("#171717", "#171717","#171717","#171717");
-//        });
-//
-//        deleteButton.setOnAction(e-> {
-//            toggleTextColors("#171717", "#171717","#171717","#171717");
-//            Alert alert = new Alert(Alert.AlertType.WARNING);
-//            alert.setTitle("Profile Delete Confirmation");
-//            alert.setHeaderText("All your user details will be lost. Still your announcements could be seen");
-//            alert.setContentText("Are you ok with this?");
-//
-//            try{
-//                Optional<ButtonType> result = alert.showAndWait();
-//                if (result.get() == ButtonType.OK)
-//                    deleteAccount.deleteAccount(emailID.getText());
-//                    main.window.setScene(loginHome.homeView());
-//            }
-//            catch (Exception exe){
-//                exe.getMessage();
-//            }
-//        });
-//
-//        coursePane.setOnMouseClicked(e-> {
-//            optionData.setTop(courseInfo.TAinfo());
-//            toggleTextColors("red", "#171717","#171717","#171717");
-//        });
-//
-//        peopleSearch ob = new peopleSearch();
-//        findPeoplePane.setOnMouseClicked(e-> {
-//            optionData.setTop(ob.peoplesearch());
-//            toggleTextColors("#171717", "red","#171717","#171717");
-//        });
-//
-//        speakOutPane.setOnMouseClicked(e-> {
-//            optionData.setTop(notices.notices(emailID.getText()));
-//            toggleTextColors("#171717","#171717","red","#171717");
-//            notices.messages.requestFocus();
-//        });
-//
+        createViewPane.setOnMouseClicked(e-> {
+
+            Label newList = new Label("Testing");
+            newList.setFont(new Font("Cambria", 20));
+            newList.setTextFill(Color.web("#171717"));
+            newList.setPadding(new Insets(10));
+            StackPane newListPane = new StackPane(newList);
+            newListPane.setAlignment(Pos.BASELINE_LEFT);
+            newListPane.setStyle("-fx-background-color: #f4f4ff");
+            newListPane.setCursor(Cursor.HAND);
+
+            lists.getChildren().add(newListPane);
+        });
+
 //        submissionPane.setOnMouseClicked(e-> {
 //            optionData.setTop(submissions.tutorials(emailID.getText()));
 //            toggleTextColors("#171717","#171717","#171717","red");
 //            submissions.tutorials.requestFocus();
 //        });
-//
-//        logoutPane.setOnMouseClicked(e-> {
-//            userSignOut.userSignOut(emailID.getText());
-//            main.window.setScene(loginHome.homeView());
-//        });
 
-        userOptions.setLeft(optionDetails);
-        userOptions.setCenter(optionData);
+        logoutPane.setOnMouseClicked(e-> {
+            userSignOut.userSignOut(emailId);
+            main.window.setScene(loginHome.homeView());
+        });
 
-        Scene scene = new Scene(userOptions,800,500);
+        profilePane.setLeft(options);
+        profilePane.setCenter(optionData);
+
+        Scene scene = new Scene(profilePane,800,500);
         scene.getStylesheets().add(main.class.getResource("../../resources/css/main.css").toExternalForm());
 
         String image = profile.class.getResource("../resources/images/splash.jpg").toExternalForm();
         optionData.setStyle("-fx-background-image: url('" + image + "'); " +
                 "-fx-background-position: center center; " +
                 "-fx-background-repeat: stretch;");
-        optionDetails.setStyle("-fx-background-image: url('" + image + "'); " +
+        options.setStyle("-fx-background-image: url('" + image + "'); " +
                 "-fx-background-position: center center; " +
                 "-fx-background-repeat: stretch;");
 
@@ -236,9 +175,6 @@ public class profile {
 
     public static void toggleTextColors(String courseColor, String findColor, String speakoutColor, String submissionColor)
     {
-        course.setTextFill(Color.web(courseColor));
-        findPeople.setTextFill(Color.web(findColor));
-        speakOut.setTextFill(Color.web(speakoutColor));
-        submission.setTextFill(Color.web(submissionColor));
+//        course.setTextFill(Color.web(courseColor));
     }
 }

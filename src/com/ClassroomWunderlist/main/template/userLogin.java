@@ -86,7 +86,7 @@ public class userLogin {
             else{
                 status = dbLoginCheck.dbLoginCheck(companyName.getText(),emailId.getText(),password.getText());
                 if (status=="success"){
-                    main.window.setScene(profile.main());
+                    main.window.setScene(profile.main(companyName.getText(), emailId.getText()));
                 }
                 else
                     error.setText("Incorrect Username / Email Id or password !");
