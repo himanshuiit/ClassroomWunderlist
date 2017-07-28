@@ -5,6 +5,8 @@ import com.ClassroomWunderlist.database.signIn.userSignOut;
 import com.ClassroomWunderlist.main.windows.createNewList.newList;
 import com.ClassroomWunderlist.main.windows.home.main;
 import com.ClassroomWunderlist.database.lists.fetchLatest;
+import com.ClassroomWunderlist.main.template.assignedbugs;
+import com.ClassroomWunderlist.main.template.bugsInList;
 
 import de.jensd.fx.glyphs.GlyphsDude;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
@@ -36,7 +38,7 @@ public class profile {
     public static Scene main(String companyName, String completeName, String emailId){
         BorderPane profilePane = new BorderPane();
 
-        optionData = new BorderPane();
+        optionData = new BorderPane(assignedbugs.view(emailId));
 
         BorderPane options = new BorderPane();
         options.setPrefWidth(220);
@@ -73,9 +75,7 @@ public class profile {
         assigned.setStyle("-fx-background-color: #f4f4ff");
         assigned.setCursor(Cursor.HAND);
 
-        assigned.setOnMouseClicked(e->{
-//            optionData.setCenter();
-        });
+        assigned.setOnMouseClicked(e-> optionData.setCenter(assignedbugs.view(emailId)));
 
         TextField searchlists = new TextField();
         searchlists.setPromptText("Search by keyword");
@@ -177,9 +177,7 @@ public class profile {
             newListPane.setOnMouseEntered(e-> newListPane.setStyle("-fx-background-color: #dbdbe5"));
             newListPane.setOnMouseExited(e-> newListPane.setStyle("-fx-background-color: #f4f4ff"));
             newListPane.setCursor(Cursor.HAND);
-            newListPane.setOnMouseClicked(e->{
-
-            });
+            newListPane.setOnMouseClicked(e-> optionData.setCenter(bugsInList.view(company.getText(),name)));
 
             lists.getChildren().add(newListPane);
         }

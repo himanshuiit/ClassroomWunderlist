@@ -39,7 +39,7 @@ CREATE TABLE `bugcomment` (
 
 LOCK TABLES `bugcomment` WRITE;
 /*!40000 ALTER TABLE `bugcomment` DISABLE KEYS */;
-INSERT INTO `bugcomment` VALUES ('','microsoft','Website Bugs','hkbansal@gmail.com','lazy loading issue','@shubham Please check the slider.js file '),('','microsoft','Website Bugs','vkthakur@gmail.com','lazy loading issue','@shubham I made some changes yesterday. Pull latest code');
+INSERT INTO `bugcomment` VALUES ('2017.07.27.19.55.28','microsoft','Website Bugs','hkbansal@gmail.com','lazy loading issue','@shubham Please check the slider.js file '),('2017.07.27.20.55.28','microsoft','Website Bugs','vkthakur@gmail.com','lazy loading issue','@shubham I made some changes yesterday. Pull latest code');
 /*!40000 ALTER TABLE `bugcomment` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -69,7 +69,7 @@ CREATE TABLE `bugsinlist` (
 
 LOCK TABLES `bugsinlist` WRITE;
 /*!40000 ALTER TABLE `bugsinlist` DISABLE KEYS */;
-INSERT INTO `bugsinlist` VALUES ('2017.07.26.19.55.28','microsoft','Technicals','cannot load moduler js','','2017.07.31.19.55.28','P5',''),('2017.07.26.19.55.28','microsoft','Website Bugs','lazy loading issue','submiitr07@gmail.com','2017.07.31.19.55.28','P5',''),('2017.07.26.19.55.28','microsoft','Website Bugs','lazy loading issue Part 2','submiitr07@gmail.com','2017.07.31.19.55.28','P5','');
+INSERT INTO `bugsinlist` VALUES ('2017.07.26.19.55.28','microsoft','Technicals','cannot load moduler js','','2017.07.31.19.55.28','P5','false'),('2017.07.26.19.55.28','microsoft','Website Bugs','lazy loading issue','submiitr07@gmail.com','2017.07.31.19.55.28','P5','false'),('2017.07.26.19.55.28','microsoft','Website Bugs','lazy loading issue Part 2','submiitr07@gmail.com','2017.07.31.19.55.28','P5','false');
 /*!40000 ALTER TABLE `bugsinlist` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -109,6 +109,7 @@ DROP TABLE IF EXISTS `currentuser`;
 CREATE TABLE `currentuser` (
   `id` varchar(100) NOT NULL,
   `companyName` varchar(100) NOT NULL,
+  `fullName` varchar(400) NOT NULL,
   `employeeEmailId` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -120,7 +121,7 @@ CREATE TABLE `currentuser` (
 
 LOCK TABLES `currentuser` WRITE;
 /*!40000 ALTER TABLE `currentuser` DISABLE KEYS */;
-INSERT INTO `currentuser` VALUES ('.8Q8MF32.CN762064CH1JMT.','microsoft','submiitr07@gmail.com');
+INSERT INTO `currentuser` VALUES ('.8Q8MF32.CN762064CH1JMT.','microsoft','Shubham Madheysia','submiitr07@gmail.com');
 /*!40000 ALTER TABLE `currentuser` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -145,7 +146,7 @@ CREATE TABLE `lists` (
 
 LOCK TABLES `lists` WRITE;
 /*!40000 ALTER TABLE `lists` DISABLE KEYS */;
-INSERT INTO `lists` VALUES ('2017.07.26.18.00.28','microsoft','Website Bugs'),('2017.07.27.18.00.28','microsoft','Technicals'),('2017.07.27.20.00.28','microsoft','Product v2.0 bugs');
+INSERT INTO `lists` VALUES ('2017.07.26.18.00.28','microsoft','Website Bugs'),('2017.07.27.18.00.28','microsoft','Technicals'),('2017.07.27.20.00.28','microsoft','Product v2.0 bugs'),('2017.07.28.19.02.22','microsoft','Android getUserDetail API '),('2017.07.28.19.06.17','microsoft','Testing Issues'),('2017.07.28.20.25.19','mozilla','initial list here');
 /*!40000 ALTER TABLE `lists` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -158,4 +159,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-07-28 17:28:12
+-- Dump completed on 2017-07-28 22:28:32
