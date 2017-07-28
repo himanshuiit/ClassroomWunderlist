@@ -49,7 +49,19 @@ public class bugsInList {
                 null,
                 null);
 
-        myComboBox.valueProperty().addListener((ov, t, t1) -> System.out.println(t1));
+
+        myComboBox.valueProperty().addListener((ov, t, t1) -> {
+            if (t1.equals("Sort by Creation Date"))
+                fetching(companyName,listName, "ORDER BY timestamp asc");
+            else if (t1.equals("Sort Alphabetically"))
+                fetching(companyName,listName, "ORDER BY bugName asc");
+            else if (t1.equals("Sort by Due Date"))
+                fetching(companyName,listName, "ORDER BY deadline asc");
+            else if (t1.equals("Sort by Asignee"))
+                fetching(companyName,listName, "ORDER BY assigneeEmailId asc");
+            else
+                fetching(companyName,listName, "ORDER BY priority asc");
+        });
 
         fetching(companyName, listName, "ORDER BY timestamp asc");
 
@@ -69,6 +81,15 @@ public class bugsInList {
         return view;
     }
 
+    public static void fetching(String companyName, String listName, String filter){
+        String[][] bugsList = fetchbugFromList.fetchbugFromList(companyName, listName, filter);
+        lists.getChildren().clear();
+        if (bugsList[0][0].equals("SUCCESS")){
+            for (int i=1; i<bugsList.length;++i )
+                addList(bugsList[i][0]);
+        }
+    }
+
     public static void addList(String name){
         Label newBugs = new Label(name);
         newBugs.setPadding(new Insets(10));
@@ -85,15 +106,6 @@ public class bugsInList {
             view.setRight(rightPanel);
         });
         lists.getChildren().add(newBugsPane);
-    }
-
-    public static void fetching(String companyName, String listName, String filter){
-        String[][] bugsList = fetchbugFromList.fetchbugFromList(companyName, listName, filter);
-
-        if (bugsList[0][0].equals("SUCCESS")){
-            for (int i=1; i<bugsList.length;++i )
-                addList(bugsList[i][0]);
-        }
     }
 
 }

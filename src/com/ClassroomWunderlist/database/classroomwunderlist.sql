@@ -26,10 +26,10 @@ CREATE TABLE `bugcomment` (
   `timestamp` varchar(50) NOT NULL,
   `companyName` varchar(100) NOT NULL,
   `listName` varchar(100) NOT NULL,
-  `emailId` varchar(50) NOT NULL,
   `bugName` varchar(500) NOT NULL,
+  `emailId` varchar(50) NOT NULL,
   `comment` varchar(200) NOT NULL,
-  PRIMARY KEY (`timestamp`,`emailId`,`listName`,`companyName`)
+  PRIMARY KEY (`timestamp`,`companyName`,`listName`,`emailId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -39,7 +39,7 @@ CREATE TABLE `bugcomment` (
 
 LOCK TABLES `bugcomment` WRITE;
 /*!40000 ALTER TABLE `bugcomment` DISABLE KEYS */;
-INSERT INTO `bugcomment` VALUES ('2017.07.27.19.55.28','microsoft','Website Bugs','hkbansal@gmail.com','lazy loading issue','@shubham Please check the slider.js file '),('2017.07.27.20.55.28','microsoft','Website Bugs','vkthakur@gmail.com','lazy loading issue','@shubham I made some changes yesterday. Pull latest code');
+INSERT INTO `bugcomment` VALUES ('2017.07.27.19.55.28','microsoft','Website Bugs','lazy loading issue','hkbansal@gmail.com','@shubham Please check the slider.js file '),('2017.07.27.20.55.28','microsoft','Website Bugs','lazy loading issue','vkthakur@gmail.com','@shubham I made some changes yesterday. Pull latest code');
 /*!40000 ALTER TABLE `bugcomment` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -69,7 +69,7 @@ CREATE TABLE `bugsinlist` (
 
 LOCK TABLES `bugsinlist` WRITE;
 /*!40000 ALTER TABLE `bugsinlist` DISABLE KEYS */;
-INSERT INTO `bugsinlist` VALUES ('2017.07.26.19.55.28','microsoft','Technicals','cannot load moduler js','','2017.07.31.19.55.28','P5','false'),('2017.07.26.19.55.28','microsoft','Website Bugs','lazy loading issue','submiitr07@gmail.com','2017.07.31.19.55.28','P5','false'),('2017.07.26.19.55.28','microsoft','Website Bugs','lazy loading issue Part 2','submiitr07@gmail.com','2017.07.31.19.55.28','P5','false');
+INSERT INTO `bugsinlist` VALUES ('2017.07.26.19.55.28','microsoft','Technicals','cannot load moduler js','','2017.07.31.19.55.28','P5','false'),('2017.07.26.19.55.28','microsoft','Website Bugs','lazy loading issue','submiitr07@gmail.com','2017.07.31.19.55.28','P2','false'),('2017.07.26.19.55.28','microsoft','Website Bugs','lazy loading issue Part 2','submiitr07@gmail.com','2017.07.31.19.55.28','P5','false'),('2017.07.27.19.55.28','microsoft','Product v2.0 bugs','Amount payable for bebinca is not showing','hkbansal@gmail.com','2017.07.31.19.55.28','P4','false'),('2017.07.27.19.55.28','microsoft','Product v2.0 bugs','slides regions and more flavours dropdown indicator','submiitr07@gmail.com','2017.07.31.19.55.28','P5','false'),('2017.07.28.19.55.28','microsoft','Website Bugs','Too much white spaces in Regions dropdown','submiitr07@gmail.com','2017.07.31.19.55.28','P5','false'),('2017.07.28.19.55.28','microsoft','Website Bugs','Too much white spaces in Regions dropdown Part 2','submiitr07@gmail.com','2017.07.31.19.55.28','P3','false'),('2017.07.29.19.55.28','microsoft','Android getUserDetail API ','Amount payable for bebinca is not showing','hkbansal@gmail.com','2017.07.31.19.55.28','P5','false'),('2017.07.29.19.55.28','microsoft','Android getUserDetail API ','slides regions and more flavours dropdown indicator','submiitr07@gmail.com','2017.07.31.19.55.28','P5','false'),('2017.07.30.19.55.28','microsoft','Testing Issues','slides regions and more flavours dropdown indicator','submiitr07@gmail.com','2017.07.31.19.55.28','P4','false'),('2017.07.30.19.55.28','microsoft','Testing Issues','Too much white spaces in Regions dropdown','submiitr07@gmail.com','2017.07.31.19.55.28','P5','false'),('2017.07.31.19.55.28','microsoft','Testing Issues','slides regions and more flavours dropdown indicator again','submiitr07@gmail.com','2017.07.31.19.55.28','P1','false'),('2017.07.31.19.55.28','microsoft','Testing Issues','Too much white spaces in Regions dropdown Part 2','submiitr07@gmail.com','2017.07.31.19.55.28','P2','false');
 /*!40000 ALTER TABLE `bugsinlist` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -146,7 +146,7 @@ CREATE TABLE `lists` (
 
 LOCK TABLES `lists` WRITE;
 /*!40000 ALTER TABLE `lists` DISABLE KEYS */;
-INSERT INTO `lists` VALUES ('2017.07.26.18.00.28','microsoft','Website Bugs'),('2017.07.27.18.00.28','microsoft','Technicals'),('2017.07.27.20.00.28','microsoft','Product v2.0 bugs'),('2017.07.28.19.02.22','microsoft','Android getUserDetail API '),('2017.07.28.19.06.17','microsoft','Testing Issues'),('2017.07.28.20.25.19','mozilla','initial list here');
+INSERT INTO `lists` VALUES ('2017.07.26.18.00.28','microsoft','Website Bugs'),('2017.07.27.18.00.28','microsoft','Technicals'),('2017.07.27.20.00.28','microsoft','Product v2.0 bugs'),('2017.07.28.19.02.22','microsoft','Android getUserDetail API '),('2017.07.28.19.06.17','microsoft','Testing Issues'),('2017.07.28.20.25.19','mozilla','initial list here'),('2017.07.29.00.59.09','microsoft','Bugs and Issues');
 /*!40000 ALTER TABLE `lists` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -159,4 +159,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-07-28 22:28:32
+-- Dump completed on 2017-07-29  2:18:45

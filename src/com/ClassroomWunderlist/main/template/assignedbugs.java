@@ -49,7 +49,18 @@ public class assignedbugs {
                 null,
                 null);
 
-        myComboBox.valueProperty().addListener((ov, t, t1) -> System.out.println(t1));
+        myComboBox.valueProperty().addListener((ov, t, t1) -> {
+            if (t1.equals("Sort by Creation Date"))
+                fetching(companyName,assigneeEmailId, "ORDER BY timestamp asc");
+            else if (t1.equals("Sort Alphabetically"))
+                fetching(companyName,assigneeEmailId, "ORDER BY bugName asc");
+            else if (t1.equals("Sort by Due Date"))
+                fetching(companyName,assigneeEmailId, "ORDER BY deadline asc");
+            else if (t1.equals("Sort by Asignee"))
+                fetching(companyName,assigneeEmailId, "ORDER BY assigneeEmailId asc");
+            else
+                fetching(companyName,assigneeEmailId, "ORDER BY priority asc");
+        });
 
         fetching(companyName,assigneeEmailId, "ORDER BY timestamp asc");
 
@@ -69,6 +80,15 @@ public class assignedbugs {
         return view;
     }
 
+    public static void fetching(String companyName, String assigneeEmailId, String filter){
+        String[][] bugsList = fetchAssignedBugs.fetchAssignedBugs(companyName, assigneeEmailId, filter);
+        lists.getChildren().clear();
+        if (bugsList[0][0].equals("SUCCESS")){
+            for (int i=1; i<bugsList.length;++i )
+                addList(bugsList[i][0]);
+        }
+    }
+
     public static void addList(String name){
         Label newBugs = new Label(name);
         newBugs.setPadding(new Insets(10));
@@ -85,14 +105,5 @@ public class assignedbugs {
             view.setRight(rightPanel);
         });
         lists.getChildren().add(newBugsPane);
-    }
-
-    public static void fetching(String companyName, String assigneeEmailId, String filter){
-        String[][] bugsList = fetchAssignedBugs.fetchAssignedBugs(companyName, assigneeEmailId, filter);
-
-        if (bugsList[0][0].equals("SUCCESS")){
-            for (int i=1; i<bugsList.length;++i )
-                addList(bugsList[i][0]);
-        }
     }
 }
