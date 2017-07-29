@@ -2,13 +2,16 @@ package com.ClassroomWunderlist.main.template;
 
 import com.ClassroomWunderlist.database.bugs.assigned.fetchAssignedBugs;
 
+import com.ClassroomWunderlist.database.taskUpdate.markComplete;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Cursor;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -22,7 +25,7 @@ public class assignedbugs {
     public static BorderPane rightPanel;
     public static BorderPane view;
 
-    public static BorderPane view(String companyName, String assigneeEmailId){
+    public BorderPane view(String companyName, String assigneeEmailId){
 
         lists = new VBox(15);
 
@@ -37,7 +40,8 @@ public class assignedbugs {
                 "Sort Alphabetically",
                 "Sort by Due Date",
                 "Sort by Asignee",
-                "Sort by Priority");
+                "Sort by Priority",
+                "Sort by not completed");
         myComboBox.setValue("Sort by Creation Date");
 
         BorderPane temp = new BorderPane(null,null,myComboBox,null,header);
@@ -58,8 +62,10 @@ public class assignedbugs {
                 fetching(companyName,assigneeEmailId, "ORDER BY deadline asc");
             else if (t1.equals("Sort by Asignee"))
                 fetching(companyName,assigneeEmailId, "ORDER BY assigneeEmailId asc");
-            else
+            else if (t1.equals("Sort by Priority"))
                 fetching(companyName,assigneeEmailId, "ORDER BY priority asc");
+            else
+                fetching(companyName,assigneeEmailId, "ORDER BY checked asc");
         });
 
         fetching(companyName,assigneeEmailId, "ORDER BY timestamp asc");
@@ -80,7 +86,7 @@ public class assignedbugs {
         return view;
     }
 
-    public static void fetching(String companyName, String assigneeEmailId, String filter){
+    public void fetching(String companyName, String assigneeEmailId, String filter){
         String[][] bugsList = fetchAssignedBugs.fetchAssignedBugs(companyName, assigneeEmailId, filter);
         lists.getChildren().clear();
         if (bugsList[0][0].equals("SUCCESS")){
@@ -89,20 +95,44 @@ public class assignedbugs {
         }
     }
 
-    public static void addList(String companyName, String listName, String bugName, String assigneeEmailId, String deadline, String priority, String checked){
+    public void addList(String companyName, String listName, String bugName, String assigneeEmailId, String deadline, String priority, String checked){
+
+        CheckBox taskCheck = new CheckBox();
+        if (checked.equals("true"))
+            taskCheck.setSelected(true);
+        taskCheck.setPadding(new Insets(10,0,10,10));
+        taskCheck.setFont(new Font("Cambria", 15));
+
+        taskCheck.selectedProperty().addListener((nodeValue,oldValue,newValue) ->{
+            String status = markComplete.update(companyName,listName,bugName,newValue.toString());
+            if (status.equals("success") || rightPanel.getCenter()!=null){
+                rightPanelComments ob = new rightPanelComments();
+                rightPanel.setCenter(ob.rightPanelComments(
+                    companyName, listName, bugName, assigneeEmailId, deadline, priority, newValue.toString(), taskCheck.selectedProperty())
+                );
+            }
+        });
 
         Label newBugs = new Label(bugName);
-        newBugs.setPadding(new Insets(10));
+        newBugs.setPadding(new Insets(10,10,10,0));
         newBugs.setFont(new Font("Cambria", 15));
         newBugs.setTextFill(Color.web("#171717"));
-        StackPane newBugsPane = new StackPane(newBugs);
+
+        HBox hb = new HBox(10,taskCheck, newBugs);
+
+        StackPane newBugsPane = new StackPane(hb);
         newBugsPane.setAlignment(Pos.BASELINE_LEFT);
         newBugsPane.setStyle("-fx-background-color: #f4f4ff");
-        newBugsPane.setOnMouseEntered(e-> newBugsPane.setStyle("-fx-background-color: #deeff5"));
+        newBugsPane.setOnMouseEntered(e-> newBugsPane.setStyle("-fx-background-color: #e6f3f7"));
         newBugsPane.setOnMouseExited(e-> newBugsPane.setStyle("-fx-background-color: #f4f4ff"));
         newBugsPane.setCursor(Cursor.HAND);
+
         newBugsPane.setOnMouseClicked(e->{
-            rightPanel.setCenter(rightPanelComments.rightPanelComments(companyName, listName, bugName, assigneeEmailId, deadline, priority, checked));
+            String latestCheck = taskCheck.isSelected() ? "true" : "false" ;
+            rightPanelComments ob = new rightPanelComments();
+            rightPanel.setCenter(ob.rightPanelComments(
+                companyName, listName, bugName, assigneeEmailId, deadline, priority, latestCheck, taskCheck.selectedProperty())
+            );
             view.setRight(rightPanel);
         });
         lists.getChildren().add(newBugsPane);

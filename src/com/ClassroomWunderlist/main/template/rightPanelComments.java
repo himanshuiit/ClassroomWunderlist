@@ -3,14 +3,14 @@ package com.ClassroomWunderlist.main.template;
 import com.ClassroomWunderlist.database.bugComment.fetchbugsComment;
 import com.ClassroomWunderlist.database.bugComment.addNewComment;
 
+import javafx.beans.property.BooleanProperty;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Cursor;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -28,16 +28,31 @@ public class rightPanelComments {
 
     public static final Pattern VALID_STRING_REGEX = Pattern.compile("^\\s*$", Pattern.CASE_INSENSITIVE);
 
-    public static BorderPane rightPanelComments(String companyName, String listName, String bugName, String assigneeEmailId, String deadline, String priority, String checked){
+    public BorderPane rightPanelComments(String companyName, String listName, String bugName, String assigneeEmailId, String deadline, String priority, String checked, BooleanProperty checkBox){
 
-        Label bugHeader = new Label(bugName);
-        bugHeader.setWrapText(true);
-        bugHeader.setPadding(new Insets(5));
-        bugHeader.setFont(new Font("Cambria", 20));
-        bugHeader.setTextFill(Color.web("#ededed"));
-        ScrollPane bugHeaderPane = new ScrollPane(bugHeader);
-        bugHeaderPane.setFitToWidth(true);
+        CheckBox taskCheck = new CheckBox();
+        if (checked.equals("true")){
+            taskCheck.setSelected(true);
+        }
+        taskCheck.setPadding(new Insets(15,0,-5,5));
+        taskCheck.setFont(new Font("Cambria", 15));
+        taskCheck.selectedProperty().bindBidirectional(checkBox);       //Best line I ever wrote so far
+
+        Label newBugs = new Label(bugName);
+        newBugs.setWrapText(true);
+        newBugs.setPadding(new Insets(5,5,5,0));
+        newBugs.setFont(new Font("Cambria", 20));
+        newBugs.setTextFill(Color.web("#ededed"));
+
+        HBox hb = new HBox(10,taskCheck, newBugs);
+        hb.setPadding(new Insets(25,0,0,0));
+
+        StackPane bugHeaderPane = new StackPane(hb);
+//        bugHeaderPane.setFitToWidth(true);
         bugHeaderPane.setPrefHeight(100);
+
+        if(assigneeEmailId.isEmpty() || assigneeEmailId.equals(null))
+            assigneeEmailId= "(none)";
 
         Label assignee = new Label("Assigned to "+assigneeEmailId);
         assignee.setPadding(new Insets(5));
@@ -90,10 +105,11 @@ public class rightPanelComments {
         Label error = new Label("");
         error.setTextFill(Color.web("red"));
 
+        String finalAssigneeEmailId = assigneeEmailId;
         send.setOnAction(e-> {
             if (!newComment.getText().equals("") && !validate(newComment.getText())){
                 String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
-                String status = addNewComment.add(timeStamp, companyName, listName, bugName, assigneeEmailId, newComment.getText());
+                String status = addNewComment.add(timeStamp, companyName, listName, bugName, finalAssigneeEmailId, newComment.getText());
 
                 if (status=="success"){
                     BorderPane newmessage = comments.rightformatmessage(timeStamp, newComment.getText());

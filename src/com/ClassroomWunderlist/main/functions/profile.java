@@ -38,7 +38,8 @@ public class profile {
     public static Scene main(String companyName, String completeName, String emailId){
         BorderPane profilePane = new BorderPane();
 
-        optionData = new BorderPane(assignedbugs.view(companyName, emailId));
+        assignedbugs ob = new assignedbugs();
+        optionData = new BorderPane(ob.view(companyName, emailId));
 
         BorderPane options = new BorderPane();
         options.setPrefWidth(220);
@@ -48,6 +49,7 @@ public class profile {
         user.setAlignment(Pos.TOP_CENTER);
 
         fullName = new Label(completeName);
+        fullName.setPadding(new Insets(10,0,0,0));
         fullName.setFont(new Font("Cambria", 20));
         fullName.setTextFill(Color.web("#ededed"));
 
@@ -75,7 +77,10 @@ public class profile {
         assigned.setStyle("-fx-background-color: #f4f4ff");
         assigned.setCursor(Cursor.HAND);
 
-        assigned.setOnMouseClicked(e-> optionData.setCenter(assignedbugs.view(companyName, emailId)));
+        assigned.setOnMouseClicked(e-> {
+            assignedbugs bugobject = new assignedbugs();
+            optionData.setCenter(bugobject.view(companyName, emailId));
+        });
 
         TextField searchlists = new TextField();
         searchlists.setPromptText("Search by keyword");
@@ -121,8 +126,8 @@ public class profile {
         createViewPane.setStyle("-fx-background-color: transparent");
         createViewPane.setCursor(Cursor.HAND);
 
-        newList ob = new newList();
-        createViewPane.setOnMouseClicked(e->  addlist(ob.newList(companyName)) );
+        newList listobject = new newList();
+        createViewPane.setOnMouseClicked(e->  addlist(listobject.newList(companyName)) );
 
         VBox allLists = new VBox(15);
         allLists.getChildren().addAll(assigned, searchPane, scrollerList, createViewPane);
@@ -177,7 +182,10 @@ public class profile {
             newListPane.setOnMouseEntered(e-> newListPane.setStyle("-fx-background-color: #deeff5"));
             newListPane.setOnMouseExited(e-> newListPane.setStyle("-fx-background-color: #f4f4ff"));
             newListPane.setCursor(Cursor.HAND);
-            newListPane.setOnMouseClicked(e-> optionData.setCenter(bugsInList.view(company.getText(),name)));
+            newListPane.setOnMouseClicked(e-> {
+                bugsInList ob = new bugsInList();
+                optionData.setCenter(ob.view(company.getText(),name));
+            });
             lists.getChildren().add(newListPane);
         }
     }
