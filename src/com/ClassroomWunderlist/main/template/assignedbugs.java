@@ -69,10 +69,10 @@ public class assignedbugs {
         bugs.setFitToWidth(true);
 
         leftPanel = new BorderPane(bugs,headerSection,null,null,null);
-        leftPanel.setPadding(new Insets(10,30,30,30));
+        leftPanel.setPadding(new Insets(10,10,30,10));
 
         rightPanel = new BorderPane();
-        rightPanel.setPadding(new Insets(10,30,30,30));
+        rightPanel.setPadding(new Insets(50,10,30,10));
 
         view = new BorderPane(leftPanel);
         view.setStyle("-fx-background-color: transparent");
@@ -85,12 +85,13 @@ public class assignedbugs {
         lists.getChildren().clear();
         if (bugsList[0][0].equals("SUCCESS")){
             for (int i=1; i<bugsList.length;++i )
-                addList(bugsList[i][0]);
+                addList(companyName, bugsList[i][1], bugsList[i][0], assigneeEmailId, bugsList[i][2], bugsList[i][3], bugsList[i][4]);
         }
     }
 
-    public static void addList(String name){
-        Label newBugs = new Label(name);
+    public static void addList(String companyName, String listName, String bugName, String assigneeEmailId, String deadline, String priority, String checked){
+
+        Label newBugs = new Label(bugName);
         newBugs.setPadding(new Insets(10));
         newBugs.setFont(new Font("Cambria", 15));
         newBugs.setTextFill(Color.web("#171717"));
@@ -101,7 +102,7 @@ public class assignedbugs {
         newBugsPane.setOnMouseExited(e-> newBugsPane.setStyle("-fx-background-color: #f4f4ff"));
         newBugsPane.setCursor(Cursor.HAND);
         newBugsPane.setOnMouseClicked(e->{
-            rightPanel.setCenter(rightPanelComments.rightPanelComments());
+            rightPanel.setCenter(rightPanelComments.rightPanelComments(companyName, listName, bugName, assigneeEmailId, deadline, priority, checked));
             view.setRight(rightPanel);
         });
         lists.getChildren().add(newBugsPane);

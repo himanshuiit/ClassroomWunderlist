@@ -22,7 +22,7 @@ public class main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         window=primaryStage;
-        window.setTitle("Classroom DBMS");
+        window.setTitle("Classroom Wunderlist");
 
         String userID = getMotherboardSN.getMotherboardSN();
         String[] status = userLoggedIn.userLoggedIn(userID);

@@ -8,6 +8,7 @@ import javafx.scene.Cursor;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -42,6 +43,9 @@ public class bugsInList {
 
         BorderPane temp = new BorderPane(null,null,myComboBox,null,header);
         temp.setPadding(new Insets(20,30,20,0));
+
+        TextField newBug = new TextField();
+
         BorderPane headerSection = new BorderPane(
                 null,
                 temp,
@@ -70,10 +74,10 @@ public class bugsInList {
         bugs.setFitToWidth(true);
 
         leftPanel = new BorderPane(bugs,new VBox(headerSection),null,null,null);
-        leftPanel.setPadding(new Insets(10,30,30,30));
+        leftPanel.setPadding(new Insets(10,10,30,10));
 
         rightPanel = new BorderPane();
-        rightPanel.setPadding(new Insets(10,30,30,30));
+        rightPanel.setPadding(new Insets(50,10,30,10));
 
         view = new BorderPane(leftPanel);
         view.setStyle("-fx-background-color: transparent");
@@ -86,12 +90,12 @@ public class bugsInList {
         lists.getChildren().clear();
         if (bugsList[0][0].equals("SUCCESS")){
             for (int i=1; i<bugsList.length;++i )
-                addList(bugsList[i][0]);
+                addList(companyName,listName,  bugsList[i][0], bugsList[i][1], bugsList[i][2], bugsList[i][3], bugsList[i][4]);
         }
     }
 
-    public static void addList(String name){
-        Label newBugs = new Label(name);
+    public static void addList(String companyName, String listName, String bugName, String assigneeEmailId, String deadline, String priority, String checked){
+        Label newBugs = new Label(bugName);
         newBugs.setPadding(new Insets(10));
         newBugs.setFont(new Font("Cambria", 15));
         newBugs.setTextFill(Color.web("#171717"));
@@ -102,7 +106,7 @@ public class bugsInList {
         newBugsPane.setOnMouseExited(e-> newBugsPane.setStyle("-fx-background-color: #f4f4ff"));
         newBugsPane.setCursor(Cursor.HAND);
         newBugsPane.setOnMouseClicked(e->{
-            rightPanel.setCenter(rightPanelComments.rightPanelComments());
+            rightPanel.setCenter(rightPanelComments.rightPanelComments(companyName, listName, bugName, assigneeEmailId, deadline, priority, checked));
             view.setRight(rightPanel);
         });
         lists.getChildren().add(newBugsPane);
