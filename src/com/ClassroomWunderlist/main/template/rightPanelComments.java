@@ -17,13 +17,16 @@ import javafx.scene.text.Font;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class rightPanelComments {
     public static String[] months = {"","Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"};
 
-    public static BorderPane bugComment;
     public static ScrollPane scroller;
     public static VBox fetchedComments;
+
+    public static final Pattern VALID_STRING_REGEX = Pattern.compile("^\\s*$", Pattern.CASE_INSENSITIVE);
 
     public static BorderPane rightPanelComments(String companyName, String listName, String bugName, String assigneeEmailId, String deadline, String priority, String checked){
 
@@ -88,16 +91,18 @@ public class rightPanelComments {
         error.setTextFill(Color.web("red"));
 
         send.setOnAction(e-> {
-            String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
-            String status = addNewComment.add(timeStamp, companyName, listName, bugName, assigneeEmailId, newComment.getText());
+            if (!newComment.getText().equals("") && !validate(newComment.getText())){
+                String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
+                String status = addNewComment.add(timeStamp, companyName, listName, bugName, assigneeEmailId, newComment.getText());
 
-            if (status=="success"){
-                BorderPane newmessage = comments.rightformatmessage(timeStamp, newComment.getText());
-                fetchedComments.getChildren().add(newmessage);
-                newComment.setText("");
+                if (status=="success"){
+                    BorderPane newmessage = comments.rightformatmessage(timeStamp, newComment.getText());
+                    fetchedComments.getChildren().add(newmessage);
+                    newComment.setText("");
+                }
+                else
+                    error.setText(status);
             }
-            else
-                error.setText(status);
         });
 
         mymessageCorner.setLeft(newComment);
@@ -134,5 +139,11 @@ public class rightPanelComments {
         else
             return "-fx-background-color: #cd3232";
     }
+
+    public static boolean validate(String Str) {
+        Matcher matcher = VALID_STRING_REGEX .matcher(Str);
+        return matcher.find();
+    }
+
 
 }
