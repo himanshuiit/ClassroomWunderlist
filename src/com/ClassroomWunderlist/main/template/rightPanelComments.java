@@ -28,7 +28,7 @@ public class rightPanelComments {
 
     public static final Pattern VALID_STRING_REGEX = Pattern.compile("^\\s*$", Pattern.CASE_INSENSITIVE);
 
-    public BorderPane rightPanelComments(String companyName, String listName, String bugName, String assigneeEmailId, String deadline, String priority, String checked, BooleanProperty checkBox){
+    public BorderPane rightPanelComments(String companyName, String listName, String bugName, String assigneeEmailId, String deadline, String priority, String checked, BooleanProperty checkBox, String currentUserEmailId){
 
         CheckBox taskCheck = new CheckBox();
         if (checked.equals("true")){
@@ -51,7 +51,7 @@ public class rightPanelComments {
 //        bugHeaderPane.setFitToWidth(true);
         bugHeaderPane.setPrefHeight(100);
 
-        if(assigneeEmailId.isEmpty() || assigneeEmailId.equals(null))
+        if(assigneeEmailId == null || assigneeEmailId.isEmpty())
             assigneeEmailId= "(none)";
 
         Label assignee = new Label("Assigned to "+assigneeEmailId);
@@ -59,10 +59,18 @@ public class rightPanelComments {
         assignee.setFont(new Font("Cambria", 16));
         assignee.setTextFill(Color.web("#ededed"));
 
-        Label milestone = new Label("Deadline: "+timeStampChangeFormat(deadline));
+        if(deadline == null || deadline.isEmpty())
+            deadline = "(not set)";
+        else
+            deadline = timeStampChangeFormat(deadline);
+
+        Label milestone = new Label("Deadline: "+ deadline);
         milestone.setPadding(new Insets(5));
         milestone.setFont(new Font("Cambria", 16));
         milestone.setTextFill(Color.web("#ededed"));
+
+        if(priority == null || priority.isEmpty())
+            priority = "(not set)";
 
         Label priorityLabel = new Label("Priority: "+ priority);
         priorityLabel.setPadding(new Insets(5));
@@ -75,7 +83,7 @@ public class rightPanelComments {
         vb.getChildren().addAll(bugHeaderPane,assignee,milestone, priorityLabel);
         vb.setAlignment(Pos.BASELINE_LEFT);
 
-        fetchedComments = fetchbugsComment.fetchbugFromList(companyName,listName,bugName,assigneeEmailId);
+        fetchedComments = fetchbugsComment.fetchbugsComment(companyName,listName,bugName,currentUserEmailId);
 
         scroller = new ScrollPane(fetchedComments);
         scroller.setPadding(new Insets(30,0,0,0));
@@ -105,11 +113,10 @@ public class rightPanelComments {
         Label error = new Label("");
         error.setTextFill(Color.web("red"));
 
-        String finalAssigneeEmailId = assigneeEmailId;
         send.setOnAction(e-> {
             if (!newComment.getText().equals("") && !validate(newComment.getText())){
                 String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
-                String status = addNewComment.add(timeStamp, companyName, listName, bugName, finalAssigneeEmailId, newComment.getText());
+                String status = addNewComment.add(timeStamp, companyName, listName, bugName, currentUserEmailId, newComment.getText());
 
                 if (status=="success"){
                     BorderPane newmessage = comments.rightformatmessage(timeStamp, newComment.getText());
@@ -144,7 +151,10 @@ public class rightPanelComments {
     }
 
     public static String priorityColorLabel(String priority) {
-        if (priority.equals("P1"))
+
+        if (priority == null)
+            return "-fx-background-color: transparent";
+        else if (priority.equals("P1"))
             return "-fx-background-color: #84e184";
         else if (priority.equals("P2"))
             return "-fx-background-color: #8484e1";
@@ -152,8 +162,10 @@ public class rightPanelComments {
             return "-fx-background-color: #3232cd";
         else if (priority.equals("P4"))
             return "-fx-background-color: #dc6f6f";
-        else
+        else if (priority.equals("P5"))
             return "-fx-background-color: #cd3232";
+        else
+            return "-fx-background-color: transparent";
     }
 
     public static boolean validate(String Str) {

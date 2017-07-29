@@ -2,17 +2,24 @@ package com.ClassroomWunderlist.main.template;
 
 import com.ClassroomWunderlist.database.bugs.list.fetchbugFromList;
 import com.ClassroomWunderlist.database.taskUpdate.markComplete;
+import com.ClassroomWunderlist.main.functions.profile;
+import com.ClassroomWunderlist.database.bugs.list.addNewBug;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Cursor;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class bugsInList {
 
@@ -22,7 +29,11 @@ public class bugsInList {
     public static BorderPane rightPanel;
     public static BorderPane view;
 
-    public BorderPane view(String companyName, String listName){
+    public String currentUserEmailId;
+
+    public BorderPane view(String companyName, String listName, String emailId){
+
+        currentUserEmailId = emailId;
 
         lists = new VBox(15);
 
@@ -41,32 +52,45 @@ public class bugsInList {
                 "Sort by not completed");
         myComboBox.setValue("Sort by Creation Date");
 
-        BorderPane temp = new BorderPane(null,null,myComboBox,null,header);
-        temp.setPadding(new Insets(20,30,20,0));
+        BorderPane comboPane = new BorderPane(null,null,myComboBox,null,header);
+        comboPane.setPadding(new Insets(20,30,20,0));
 
         TextField newBug = new TextField();
+        newBug.setPromptText("+ Add a to-do...");
+        newBug.setPrefColumnCount(15);
+        newBug.setFont(Font.font(18));
+        newBug.setStyle("-fx-background-color: transparent; -fx-border-color: #fff; -fx-border-width: 1,1,1,1; -fx-text-inner-color: #fff;");
+        StackPane searchPane = new StackPane(newBug);
 
         BorderPane headerSection = new BorderPane(
                 null,
-                temp,
+                comboPane,
                 null,
-                null,
+                searchPane,
                 null);
-
+        headerSection.setPadding(new Insets(0,0,20,0));
 
         myComboBox.valueProperty().addListener((ov, t, t1) -> {
-            if (t1.equals("Sort by Creation Date"))
-                fetching(companyName,listName, "ORDER BY timestamp asc");
-            else if (t1.equals("Sort Alphabetically"))
-                fetching(companyName,listName, "ORDER BY bugName asc");
-            else if (t1.equals("Sort by Due Date"))
-                fetching(companyName,listName, "ORDER BY deadline asc");
-            else if (t1.equals("Sort by Asignee"))
-                fetching(companyName,listName, "ORDER BY assigneeEmailId asc");
-            else if (t1.equals("Sort by Priority"))
-                fetching(companyName,listName, "ORDER BY priority asc");
-            else
-                fetching(companyName,listName, "ORDER BY checked asc");
+            switch (t1) {
+                case "Sort by Creation Date":
+                    fetching(companyName, listName, "ORDER BY timestamp asc");
+                    break;
+                case "Sort Alphabetically":
+                    fetching(companyName, listName, "ORDER BY bugName asc");
+                    break;
+                case "Sort by Due Date":
+                    fetching(companyName, listName, "ORDER BY deadline asc");
+                    break;
+                case "Sort by Asignee":
+                    fetching(companyName, listName, "ORDER BY assigneeEmailId asc");
+                    break;
+                case "Sort by Priority":
+                    fetching(companyName, listName, "ORDER BY priority asc");
+                    break;
+                default:
+                    fetching(companyName, listName, "ORDER BY checked asc");
+                    break;
+            }
         });
 
         fetching(companyName, listName, "ORDER BY timestamp asc");
@@ -74,8 +98,10 @@ public class bugsInList {
         ScrollPane bugs = new ScrollPane(lists);
         bugs.setStyle("-fx-background-color: transparent");
         bugs.setFitToWidth(true);
+        bugs.setVvalue(1.0);
+        bugs.vvalueProperty().bind(lists.heightProperty());
 
-        leftPanel = new BorderPane(bugs,new VBox(0,headerSection),null,null,null);
+        leftPanel = new BorderPane(bugs,headerSection,null,null,null);
         leftPanel.setPadding(new Insets(10,10,30,10));
 
         rightPanel = new BorderPane();
@@ -83,6 +109,26 @@ public class bugsInList {
 
         view = new BorderPane(leftPanel);
         view.setStyle("-fx-background-color: transparent");
+
+        newBug.focusedProperty().addListener((arg0, oldPropertyValue, newPropertyValue) -> {
+            if (newPropertyValue)
+                profile.scene.getAccelerators().put(
+                    new KeyCodeCombination(KeyCode.ENTER),
+                    () -> {
+                        String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
+                        String status = addNewBug.add(timeStamp,companyName,listName,newBug.getText());
+                        if (status.equals("success"))
+                            addList(companyName, listName, newBug.getText(), null, null, null, "false");
+                    }
+                );
+            else
+                profile.scene.getAccelerators().put(
+                    new KeyCodeCombination(KeyCode.ENTER),
+                    () ->  System.out.print("")
+                );
+        });
+
+
 
         return view;
     }
@@ -109,7 +155,7 @@ public class bugsInList {
             if (status.equals("success") || rightPanel.getCenter()!=null){
                 rightPanelComments ob = new rightPanelComments();
                 rightPanel.setCenter(ob.rightPanelComments(
-                        companyName, listName, bugName, assigneeEmailId, deadline, priority, newValue.toString(), taskCheck.selectedProperty())
+                    companyName, listName, bugName, assigneeEmailId, deadline, priority, newValue.toString(), taskCheck.selectedProperty(), currentUserEmailId)
                 );
             }
         });
@@ -132,7 +178,7 @@ public class bugsInList {
             String latestCheck = taskCheck.isSelected() ? "true" : "false" ;
             rightPanelComments ob = new rightPanelComments();
             rightPanel.setCenter(ob.rightPanelComments(
-                    companyName, listName, bugName, assigneeEmailId, deadline, priority, latestCheck, taskCheck.selectedProperty())
+                    companyName, listName, bugName, assigneeEmailId, deadline, priority, latestCheck, taskCheck.selectedProperty(), currentUserEmailId)
             );
             view.setRight(rightPanel);
         });

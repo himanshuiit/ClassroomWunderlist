@@ -32,10 +32,15 @@ public class profile {
     public static VBox lists;
 
     public static Label createView;
+    public static Scene scene;
 
     public static BorderPane optionData;
 
+    public static String currentUserEmailId;
+
     public static Scene main(String companyName, String completeName, String emailId){
+
+        currentUserEmailId = emailId;
         BorderPane profilePane = new BorderPane();
 
         assignedbugs ob = new assignedbugs();
@@ -157,7 +162,7 @@ public class profile {
         profilePane.setLeft(options);
         profilePane.setCenter(optionData);
 
-        Scene scene = new Scene(profilePane,800,500);
+        scene = new Scene(profilePane,800,500);
         scene.getStylesheets().add(main.class.getResource("../../resources/css/main.css").toExternalForm());
 
         String image = profile.class.getResource("../resources/images/splash.jpg").toExternalForm();
@@ -184,7 +189,7 @@ public class profile {
             newListPane.setCursor(Cursor.HAND);
             newListPane.setOnMouseClicked(e-> {
                 bugsInList ob = new bugsInList();
-                optionData.setCenter(ob.view(company.getText(),name));
+                optionData.setCenter(ob.view(company.getText(),name, currentUserEmailId));
             });
             lists.getChildren().add(newListPane);
         }

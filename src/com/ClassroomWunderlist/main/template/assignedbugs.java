@@ -54,18 +54,26 @@ public class assignedbugs {
                 null);
 
         myComboBox.valueProperty().addListener((ov, t, t1) -> {
-            if (t1.equals("Sort by Creation Date"))
-                fetching(companyName,assigneeEmailId, "ORDER BY timestamp asc");
-            else if (t1.equals("Sort Alphabetically"))
-                fetching(companyName,assigneeEmailId, "ORDER BY bugName asc");
-            else if (t1.equals("Sort by Due Date"))
-                fetching(companyName,assigneeEmailId, "ORDER BY deadline asc");
-            else if (t1.equals("Sort by Asignee"))
-                fetching(companyName,assigneeEmailId, "ORDER BY assigneeEmailId asc");
-            else if (t1.equals("Sort by Priority"))
-                fetching(companyName,assigneeEmailId, "ORDER BY priority asc");
-            else
-                fetching(companyName,assigneeEmailId, "ORDER BY checked asc");
+            switch (t1) {
+                case "Sort by Creation Date":
+                    fetching(companyName, assigneeEmailId, "ORDER BY timestamp asc");
+                    break;
+                case "Sort Alphabetically":
+                    fetching(companyName, assigneeEmailId, "ORDER BY bugName asc");
+                    break;
+                case "Sort by Due Date":
+                    fetching(companyName, assigneeEmailId, "ORDER BY deadline asc");
+                    break;
+                case "Sort by Asignee":
+                    fetching(companyName, assigneeEmailId, "ORDER BY assigneeEmailId asc");
+                    break;
+                case "Sort by Priority":
+                    fetching(companyName, assigneeEmailId, "ORDER BY priority asc");
+                    break;
+                default:
+                    fetching(companyName, assigneeEmailId, "ORDER BY checked asc");
+                    break;
+            }
         });
 
         fetching(companyName,assigneeEmailId, "ORDER BY timestamp asc");
@@ -108,7 +116,7 @@ public class assignedbugs {
             if (status.equals("success") || rightPanel.getCenter()!=null){
                 rightPanelComments ob = new rightPanelComments();
                 rightPanel.setCenter(ob.rightPanelComments(
-                    companyName, listName, bugName, assigneeEmailId, deadline, priority, newValue.toString(), taskCheck.selectedProperty())
+                    companyName, listName, bugName, assigneeEmailId, deadline, priority, newValue.toString(), taskCheck.selectedProperty(), assigneeEmailId)
                 );
             }
         });
@@ -131,7 +139,7 @@ public class assignedbugs {
             String latestCheck = taskCheck.isSelected() ? "true" : "false" ;
             rightPanelComments ob = new rightPanelComments();
             rightPanel.setCenter(ob.rightPanelComments(
-                companyName, listName, bugName, assigneeEmailId, deadline, priority, latestCheck, taskCheck.selectedProperty())
+                companyName, listName, bugName, assigneeEmailId, deadline, priority, latestCheck, taskCheck.selectedProperty(), assigneeEmailId)
             );
             view.setRight(rightPanel);
         });

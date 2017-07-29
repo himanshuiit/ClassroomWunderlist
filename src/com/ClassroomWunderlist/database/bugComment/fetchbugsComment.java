@@ -10,7 +10,7 @@ import java.sql.ResultSet;
 
 public class fetchbugsComment {
 
-    public static VBox fetchbugFromList(String companyName, String listName, String bugName, String currentUserMailId) {
+    public static VBox fetchbugsComment(String companyName, String listName, String bugName, String currentUserMailId) {
 
         Connection con = null;
         PreparedStatement stmt = null;
