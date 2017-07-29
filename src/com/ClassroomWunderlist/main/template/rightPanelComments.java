@@ -1,15 +1,22 @@
 package com.ClassroomWunderlist.main.template;
 
 import com.ClassroomWunderlist.database.bugComment.fetchbugsComment;
+import com.ClassroomWunderlist.database.bugComment.addNewComment;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Cursor;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class rightPanelComments {
     public static String[] months = {"","Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"};
@@ -60,7 +67,44 @@ public class rightPanelComments {
         scroller.setVvalue(1.0);
         scroller.vvalueProperty().bind(fetchedComments.heightProperty());
 
-        BorderPane panel = new BorderPane(scroller,vb,null,null,null);
+        BorderPane mymessageCorner = new BorderPane();
+        mymessageCorner.setPadding(new Insets(15,0,0,0));
+
+        TextArea newComment = new TextArea();
+        newComment.setPromptText("Enter your comment here");
+        newComment.setStyle("-fx-focus-color: transparent; -fx-border-color: #fff;-fx-border-width: 1 1 1 0;-fx-padding: 0 0 0 -2;");
+        newComment.setWrapText(true);
+        newComment.setPrefHeight(50);
+        newComment.setPrefWidth(270);
+
+        Button send = new Button("Send");
+        send.setPrefHeight(50);
+        send.setFont(new Font("Cambria", 16));
+        send.setStyle("-fx-background-color: #6ac045; -fx-focus-color: transparent; ; -fx-border: 0");
+        send.setTextFill(Color.web("#fff"));
+        send.setCursor(Cursor.HAND);
+
+        Label error = new Label("");
+        error.setTextFill(Color.web("red"));
+
+        send.setOnAction(e-> {
+            String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
+            String status = addNewComment.add(timeStamp, companyName, listName, bugName, assigneeEmailId, newComment.getText());
+
+            if (status=="success"){
+                BorderPane newmessage = comments.rightformatmessage(timeStamp, newComment.getText());
+                fetchedComments.getChildren().add(newmessage);
+                newComment.setText("");
+            }
+            else
+                error.setText(status);
+        });
+
+        mymessageCorner.setLeft(newComment);
+        mymessageCorner.setRight(send);
+        mymessageCorner.setBottom(error);
+
+        BorderPane panel = new BorderPane(scroller,vb,null,mymessageCorner,null);
         return panel;
     }
 

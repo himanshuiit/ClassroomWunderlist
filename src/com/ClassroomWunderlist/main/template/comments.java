@@ -32,22 +32,20 @@ public class comments {
         messageOwner.setFont(new Font("Cambria", 18));
         messageOwner.setTextFill(Color.web("#ccc"));
 
-        Label time = new Label(timeStampChangeFormat(timestamp));
+        Label time = new Label("\t"+timeStampChangeFormat(timestamp));
         time.setFont(new Font("Cambria", 12));
         time.setTextFill(Color.web("#9c9c9c"));
         time.setAlignment(Pos.BASELINE_RIGHT);
         time.setPadding(new Insets(5,0,0,0));
-
-        HBox htimeHB = new HBox(messageOwner,time);
 
         Label message = new Label(comments);
         message.setPadding(new Insets(0,0,15,0));
         message.setFont(new Font("Cambria", 16));
         message.setTextFill(Color.web("#fff"));
         message.setWrapText(true);
-        message.setPrefWidth(300);
+        message.setPrefWidth(280);
 
-        noticeVB.getChildren().addAll(htimeHB,message);
+        noticeVB.getChildren().addAll(messageOwner, time, message);
         notice.setLeft(noticeVB);
 
         return notice;
@@ -61,7 +59,7 @@ public class comments {
         VBox noticeVB = new VBox(0);
         noticeVB.setAlignment(Pos.TOP_RIGHT);
 
-        Label time = new Label(timeStampChangeFormat(timestamp));
+        Label time = new Label("\t"+timeStampChangeFormat(timestamp));
         time.setFont(new Font("Cambria", 12));
         time.setTextFill(Color.web("#9c9c9c"));
         time.setPadding(new Insets(5,0,0,0));
@@ -72,7 +70,7 @@ public class comments {
         message.setTextFill(Color.web("#fff"));
         message.setAlignment(Pos.BOTTOM_RIGHT);
         message.setWrapText(true);
-        message.setPrefWidth(300);
+        message.setPrefWidth(280);
 
         noticeVB.getChildren().addAll(time,message);
 
