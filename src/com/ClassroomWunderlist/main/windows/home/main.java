@@ -6,13 +6,11 @@ import com.ClassroomWunderlist.main.template.profile;
 import com.ClassroomWunderlist.main.functions.getMotherboardSN;
 
 import javafx.application.Application;
-import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class main extends Application {
     public static Stage window;
-    public static Scene scene;
 
     public static void main(String args[])
     {

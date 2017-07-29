@@ -2,14 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cb4f0844-a678-4a9f-a5f2-332a5ee99952" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/ClassroomWunderlist/main/functions/loginHome.java" afterPath="$PROJECT_DIR$/src/com/ClassroomWunderlist/main/template/loginHome.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/ClassroomWunderlist/main/functions/profile.java" afterPath="$PROJECT_DIR$/src/com/ClassroomWunderlist/main/template/profile.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ClassroomWunderlist/main/template/bugsInList.java" afterPath="$PROJECT_DIR$/src/com/ClassroomWunderlist/main/template/bugsInList.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ClassroomWunderlist/main/template/comments.java" afterPath="$PROJECT_DIR$/src/com/ClassroomWunderlist/main/template/comments.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ClassroomWunderlist/main/template/userLogin.java" afterPath="$PROJECT_DIR$/src/com/ClassroomWunderlist/main/template/userLogin.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ClassroomWunderlist/main/template/userSignUp.java" afterPath="$PROJECT_DIR$/src/com/ClassroomWunderlist/main/template/userSignUp.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ClassroomWunderlist/main/windows/createNewList/newList.java" afterPath="$PROJECT_DIR$/src/com/ClassroomWunderlist/main/windows/createNewList/newList.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ClassroomWunderlist/main/windows/home/main.java" afterPath="$PROJECT_DIR$/src/com/ClassroomWunderlist/main/windows/home/main.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -48,7 +40,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="userLogin.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="userLogin.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/ClassroomWunderlist/main/template/userLogin.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1615">
@@ -57,6 +49,18 @@
                 <element signature="imports" expanded="true" />
                 <element signature="e#4074#4432#0" expanded="true" />
                 <element signature="e#4431#4432#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/ClassroomWunderlist/main/windows/home/main.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="9" column="26" lean-forward="true" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -141,7 +145,6 @@
         <option value="$PROJECT_DIR$/src/com/ClassroomWunderlist/database/bugs/fetchAssignedBugs.java" />
         <option value="$PROJECT_DIR$/src/com/ClassroomWunderlist/database/bugs/list/fetchbugFromList.java" />
         <option value="$PROJECT_DIR$/src/com/ClassroomWunderlist/database/bugs/assigned/fetchAssignedBugs.java" />
-        <option value="$PROJECT_DIR$/src/com/ClassroomWunderlist/main/windows/home/main.java" />
         <option value="$PROJECT_DIR$/src/com/ClassroomWunderlist/main/template/message.java" />
         <option value="$PROJECT_DIR$/src/java/sql/DriverManager.java" />
         <option value="$PROJECT_DIR$/src/com/ClassroomWunderlist/database/bugs/fetchbugsComment.java" />
@@ -158,6 +161,7 @@
         <option value="$PROJECT_DIR$/src/com/ClassroomWunderlist/main/template/profile.java" />
         <option value="$PROJECT_DIR$/src/com/ClassroomWunderlist/main/template/bugsInList.java" />
         <option value="$PROJECT_DIR$/src/com/ClassroomWunderlist/main/template/comments.java" />
+        <option value="$PROJECT_DIR$/src/com/ClassroomWunderlist/main/windows/home/main.java" />
       </list>
     </option>
   </component>
@@ -284,10 +288,6 @@
               <option name="myItemId" value="windows" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="createNewList" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -382,88 +382,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="database" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ClassroomWunderlist" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ClassroomWunderlist" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ClassroomWunderlist" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="database" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lists" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ClassroomWunderlist" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ClassroomWunderlist" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ClassroomWunderlist" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="database" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bugs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="list" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ClassroomWunderlist" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ClassroomWunderlist" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ClassroomWunderlist" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="database" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bugs" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1271,16 +1189,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ClassroomWunderlist/main/windows/home/main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/ClassroomWunderlist/main/template/bugsInList.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1067">
@@ -1355,6 +1263,16 @@
             <element signature="imports" expanded="true" />
             <element signature="e#4074#4432#0" expanded="true" />
             <element signature="e#4431#4432#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ClassroomWunderlist/main/windows/home/main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="26" lean-forward="true" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
