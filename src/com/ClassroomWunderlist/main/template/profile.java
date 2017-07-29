@@ -1,12 +1,10 @@
-package com.ClassroomWunderlist.main.functions;
+package com.ClassroomWunderlist.main.template;
 
 import com.ClassroomWunderlist.database.lists.keywordSearch;
 import com.ClassroomWunderlist.database.signIn.userSignOut;
 import com.ClassroomWunderlist.main.windows.createNewList.newList;
 import com.ClassroomWunderlist.main.windows.home.main;
 import com.ClassroomWunderlist.database.lists.fetchLatest;
-import com.ClassroomWunderlist.main.template.assignedbugs;
-import com.ClassroomWunderlist.main.template.bugsInList;
 
 import de.jensd.fx.glyphs.GlyphsDude;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;

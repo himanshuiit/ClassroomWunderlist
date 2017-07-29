@@ -1,8 +1,8 @@
 package com.ClassroomWunderlist.main.windows.home;
 
 import com.ClassroomWunderlist.database.logIn.userLoggedIn;
-import com.ClassroomWunderlist.main.functions.loginHome;
-import com.ClassroomWunderlist.main.functions.profile;
+import com.ClassroomWunderlist.main.template.loginHome;
+import com.ClassroomWunderlist.main.template.profile;
 import com.ClassroomWunderlist.main.functions.getMotherboardSN;
 
 import javafx.application.Application;

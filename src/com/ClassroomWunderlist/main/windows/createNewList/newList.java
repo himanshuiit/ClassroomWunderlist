@@ -1,6 +1,6 @@
 package com.ClassroomWunderlist.main.windows.createNewList;
 
-import com.ClassroomWunderlist.main.functions.loginHome;
+import com.ClassroomWunderlist.main.template.loginHome;
 import com.ClassroomWunderlist.database.lists.addNew;
 
 import javafx.geometry.Insets;

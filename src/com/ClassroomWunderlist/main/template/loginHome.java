@@ -1,7 +1,4 @@
-package com.ClassroomWunderlist.main.functions;
-
-import com.ClassroomWunderlist.main.template.userLogin;
-import com.ClassroomWunderlist.main.template.userSignUp;
+package com.ClassroomWunderlist.main.template;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;

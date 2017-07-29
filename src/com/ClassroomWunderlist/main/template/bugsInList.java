@@ -2,7 +2,6 @@ package com.ClassroomWunderlist.main.template;
 
 import com.ClassroomWunderlist.database.bugs.list.fetchbugFromList;
 import com.ClassroomWunderlist.database.taskUpdate.markComplete;
-import com.ClassroomWunderlist.main.functions.profile;
 import com.ClassroomWunderlist.database.bugs.list.addNewBug;
 
 import javafx.geometry.Insets;
@@ -127,8 +126,6 @@ public class bugsInList {
                     () ->  System.out.print("")
                 );
         });
-
-
 
         return view;
     }

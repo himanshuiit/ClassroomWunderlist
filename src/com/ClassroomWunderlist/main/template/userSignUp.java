@@ -1,7 +1,6 @@
 package com.ClassroomWunderlist.main.template;
 
 import com.ClassroomWunderlist.database.signIn.dbSignUp;
-import com.ClassroomWunderlist.main.functions.profile;
 import com.ClassroomWunderlist.main.windows.home.main;
 
 import javafx.beans.property.BooleanProperty;
